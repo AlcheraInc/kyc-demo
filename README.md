@@ -4,6 +4,124 @@
 https://github.com/AlcheraInc/kyc-iframe-sample/blob/main/index.html
 ---
 
+# postMessage 데이터 설명
+- 포멧 
+```
+{
+  "result": 성공 실패 ["success" | "failed"],
+  "detail": {
+    "request_time": 요청시간 ["2021-12-25T03:55:31.918Z"],
+    "name": 이름 ["양동현"],
+    "phone_number": 전화번호 ["01012345678]",
+    "birthday": 생년월일 ["2000-01-01"],
+    "result_type": 사용불필요
+    "rejected_reason": 사용불필요
+    "reviewer_name": 사용불필요
+    "module": { 고객이 사용하고 있는 기능
+      "id_card_ocr": 신분증OCR 기능 사용여부 [true | false],
+      "id_card_verification": 신분증진위확인 기능 사용여부 [true | false],
+      "face_authentication": 신분증얼굴vs셀피얼굴 비교 기능 사용여부 [true | false],
+      "account_verification": 1원 계좌인증 사용여부 [true | false],
+      "liveness": 얼굴 라이브니스(진위확인) 기능 사용여부 [true | false],
+    },
+    "id_card": { 신분증인증 결과
+      "modified": 신분증 OCR 결과에서 추가 수정여부 [true | false],
+      "verified": 신분증 정보 정부기관 진위확인 결과 [true | false],
+      "id_card_image_url": 신분증 민감정보 Masking 사진 ["data:image/jpeg;base64,/9j/4AAQSkZ..."],
+      "id_crop_image_url": 신분증에서 얼굴 crop 사진 ["data:image/jpeg;base64,/9j/4AAQSkZ..."],
+      "original_ocr_data": 신분증 OCR 결과(json 형식) ["{\"idType\":\"2\",\"userName\":\"홍길동\",\"driverNo\":[\"12\",\"03\",\"123456\",\"12\"],\"juminNo1\":\"990101\",\"juminNo2\":\"1001234\",\"_juminNo2\":\"1\",\"issueDate\":\"2017-01-01\",\"transaction_id\":\"4dd9c67508fb9e4489ec683dddd3f519\",\"driverNo1\":\"\",\"driverNo2\":\"11-03-123123-11\"}"],
+      "modified_ocr_data": 신분증 OCR 결과에서 사용자가 직접 수정한 내용 [""]
+    },
+    "face_check": { 안면인증 결과
+      "is_same_person": 신분증 얼굴사진 vs 셀피 얼굴사진 비교 결과 [true | false]
+      "selfie_image_url": 셀피 얼굴사진 ["data:image/jpeg;base64,/9j/4AAQSkZ..."]
+    },
+    "account": { 1원 계좌인증 결과
+      "verified": 1원 계좌인증 성공여부 [true | false]
+    }
+  },
+  "api_response": { 사용불필요
+    "result_code": "N100",
+    "result_message": "OK."
+  }
+}
+```
+
+- 샘플 (성공케이스 예시)
+```json
+{
+  "result": "success",
+  "detail": {
+    "request_time": "2021-12-25T03:55:31.918Z",
+    "name": "홍길동",
+    "phone_number": "01012345678",
+    "birthday": "1990-01-01",
+    "result_type": 1,
+    "rejected_reason": null,
+    "reviewer_name": null,
+    "module": {
+      "id_card_ocr": true,
+      "id_card_verification": true,
+      "face_authentication": true,
+      "account_verification": true,
+      "liveness": false
+    },
+    "id_card": {
+      "modified": false,
+      "verified": true,
+      "id_card_image_url": "data:image/jpeg;base64,/9j/4AAQSkZ...",
+      "id_crop_image_url": "data:image/jpeg;base64,/9j/4AAQSkZ...",
+      "original_ocr_data": "{\"idType\":\"2\",\"userName\":\"홍길동\",\"driverNo\":[\"12\",\"03\",\"123456\",\"12\"],\"juminNo1\":\"990101\",\"juminNo2\":\"1001234\",\"_juminNo2\":\"1\",\"issueDate\":\"2017-01-01\",\"transaction_id\":\"4dd9c67508fb9e4489ec683dddd3f519\",\"driverNo1\":\"\",\"driverNo2\":\"11-03-123123-11\"}",
+      "modified_ocr_data": ""
+    },
+    "face_check": {
+      "is_same_person": true,
+      "selfie_image_url": "data:image/jpeg;base64,/9j/4AAQSkZ..."
+    },
+    "account": {
+      "verified": true
+    }
+  },
+  "api_response": {
+    "result_code": "N100",
+    "result_message": "OK."
+  }
+}
+```
+- 샘플 (실패 케이스)
+```json
+{
+  "result": "failed",
+  "detail": {
+    "request_time": "2021-12-25T04:18:23.755Z",
+    "name": "홍길동",
+    "phone_number": "01012345678",
+    "birthday": "2021-12-25",
+    "result_type": 1,
+    "rejected_reason": null,
+    "reviewer_name": null,
+    "module": {
+      "id_card_ocr": true,
+      "id_card_verification": true,
+      "face_authentication": true,
+      "account_verification": true,
+      "liveness": false
+    },
+    "id_card": {
+      "verified": false,
+      "id_card_image_url": "data:image/jpeg;base64,/9j/4AAQSkZJRgAB...",
+      "id_crop_image_url": "data:image/jpeg;base64,/9j/4AAQSkZJRgAB..."
+    },
+    "face_check": null,
+    "account": null,
+  },
+  "api_response": {
+    "result_code": "N100",
+    "result_message": "OK."
+  }
+}
+```
+
 # 샘플 코드 셋업 가이드
 - Step 1) 샘플 코드 다운로드
   - https://github.com/AlcheraInc/kyc-iframe-sample/archive/refs/heads/main.zip

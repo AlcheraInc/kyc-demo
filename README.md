@@ -1,4 +1,10 @@
 # kyc-iframe-sample
+
+# 주요 샘플 코드 (index.html)
+https://github.com/AlcheraInc/kyc-iframe-sample/blob/main/index.html
+---
+
+# 샘플 코드 셋업 가이드
 - Step 1) 샘플 코드 다운로드
   - https://github.com/AlcheraInc/kyc-iframe-sample/archive/refs/heads/main.zip
 ---

@@ -1,7 +1,7 @@
 # kyc-iframe-sample
 
 # 주요 샘플 코드 (index.html)
-https://github.com/AlcheraInc/kyc-iframe-sample/blob/main/index.html
+- 샘플코드 : https://github.com/AlcheraInc/kyc-iframe-sample/blob/main/index.html
 ---
 
 # postMessage 데이터 설명
@@ -46,7 +46,7 @@ https://github.com/AlcheraInc/kyc-iframe-sample/blob/main/index.html
   }
 }
 ```
-
+---
 - 샘플 (성공케이스 예시)
 ```json
 {
@@ -87,6 +87,7 @@ https://github.com/AlcheraInc/kyc-iframe-sample/blob/main/index.html
     "result_message": "OK."
   }
 }
+---
 ```
 - 샘플 (실패 케이스)
 ```json
@@ -123,6 +124,8 @@ https://github.com/AlcheraInc/kyc-iframe-sample/blob/main/index.html
 ```
 
 # 샘플 코드 셋업 가이드
+- Step 0) Node.js 설치 (https://nodejs.org/ko/download/ 에서 LTS 최신버전 설치)
+---
 - Step 1) 샘플 코드 다운로드
   - https://github.com/AlcheraInc/kyc-iframe-sample/archive/refs/heads/main.zip
 ---

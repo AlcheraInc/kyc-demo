@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alchera KYC Sample</title>
+    <script>
+
+        function removeOutput() {
+            const div = document.getElementById("output");
+            div.style.display = 'none';
+            div.innerHTML = '';
+        }
+
+        function output(inp) {
+            const div = document.getElementById("output");
+            const closeBtn = document.createElement("div");
+            closeBtn.className = "closeBtn";
+            closeBtn.innerHTML = "DEBUG WINDOWS <span onclick='javascript:removeOutput()'>[창 닫기]</span>";
+            const pre = document.createElement("pre");
+            pre.className = "syntaxHighlight";
+            pre.innerHTML = inp;
+            div.appendChild(closeBtn);
+            div.appendChild(pre);
+            div.style.display = 'block';
+        }
+
+        function syntaxHighlight(json) {
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                var cls = 'number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'key';
+                    } else {
+                        cls = 'string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'null';
+                }
+                return '<span class="' + cls + '">' + match + '</span>';
+            });
+        }
+
+        window.addEventListener("message", (e) => {
+            console.log("alcherakyc response", e.data); // base64 encoded된 JSON 메시지이므로 decoded해야 함
+            try {
+                const decodedData = decodeURIComponent(atob(e.data));
+                console.log("decoded", decodedData);
+                const json = JSON.parse(decodedData);
+                const str = JSON.stringify(json, undefined, 4);
+                console.log("json", json);
+
+                console.log(json.result + "처리 필요");
+                
+                if (json.result === "success") {
+                    output(syntaxHighlight(str));
+                } else if (json.result === "failed") {
+                    output(syntaxHighlight(str));
+                } else if (json.result === "complete") {
+                    output(syntaxHighlight(str));
+                    //window.close();
+                } else if (json.result === "close") {
+                    output(syntaxHighlight(str));
+                    //window.close();
+                } else {
+                    // invalid result
+                }
+            } catch (error) {
+                console.log("wrong data", error);
+            }
+        });
+
+        function onLoadAlcheraKyc(e) {
+            const params = {"customer_id": "2", "id": "user0001", "key": "Alchera0000!"};
+            encodedParams = btoa(JSON.stringify(params))
+            document.querySelector("iframe").contentWindow.postMessage(encodedParams, "*");
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .syntaxHighlight {
+            background-color: black;
+            margin: 10px;
+            width: 380px;
+            height: 500px;
+            overflow: auto;
+        }
+
+        .output {
+            width: 400px;
+            position: absolute;
+            margin: 10px;
+            outline: 1px solid black;
+            z-index: 1;
+        }
+
+        .closeBtn {
+            text-align: right;
+            padding: 10px;
+            background-color: black;
+            color: white;
+        }
+
+        .string {
+            color: green;
+        }
+
+        .number {
+            color: darkorange;
+        }
+
+        .boolean {
+            color: steelblue;
+        }
+
+        .null {
+            color: magenta;
+        }
+
+        .key {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="output" class="output" style="display: none;"></div>
+    <iframe style="position: absolute; width: 100%; height: 100%; border: none" allow="camera"
+        onload="onLoadAlcheraKyc()" src="https://kyc.useb.co.kr/auth"></iframe>
+</body>
+
+</html>

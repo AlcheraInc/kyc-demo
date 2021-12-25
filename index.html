@@ -76,6 +76,7 @@
         });
 
         function onLoadAlcheraKyc(e) {
+            // 고객사별 params 정보는 별도로 전달됩니다. 테스트를 위한 임시계정 정보이며, 운영을 위한 계정정보로 변경 필요
             const params = {"customer_id": "2", "id": "user0001", "key": "Alchera0000!"};
             encodedParams = btoa(JSON.stringify(params))
             document.querySelector("iframe").contentWindow.postMessage(encodedParams, "*");

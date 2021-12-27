@@ -124,9 +124,19 @@
 ```
 
 # 샘플 코드 셋업 가이드
-- Step 0) Node.js 설치 (https://nodejs.org/ko/download/ 에서 LTS 최신버전 설치)
+- Step 0) 개발환경 구축 (Node.js, NPM, http-server) 설치 
+  - https://nodejs.org/ko/download/ 에서 LTS 최신버전 설치
   - 정상적으로 설치되었는지 확인
   - ![image](https://user-images.githubusercontent.com/87741912/147377915-3369c5a7-2649-4721-92a5-87d93e15f7b1.png)
+  - http-server 설치 : 
+    - Linux, MAC : 
+    ```shell 
+    sudo npm install -g http-server 
+    ```
+    - Windows : 
+    ```batch
+    npm install -g http-server
+    ```
 ---
 - Step 1) 샘플 코드 다운로드
   - https://github.com/AlcheraInc/kyc-iframe-sample/archive/refs/heads/main.zip

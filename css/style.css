@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+}
+
+.syntaxHighlight {
+    background-color: black;
+    margin: 10px;
+    width: 380px;
+    max-height: 300px;
+    overflow: auto;
+    color: white;
+}
+
+.bright {
+    background-color: #eee; 
+    color: #222;
+}
+
+.popupSize {
+    width: 280px;
+    max-height: 300px;
+}
+
+.output {
+    background-color: white;
+    width: 300px;
+    position: absolute;
+    margin: 10px;
+    outline: 1px solid black;
+    z-index: 1;
+}
+
+.closeBtn {
+    text-align: right;
+    padding: 10px;
+    background-color: black;
+    color: white;
+}
+
+.string {
+    color: green;
+}
+
+.number {
+    color: darkorange;
+}
+
+.boolean {
+    color: steelblue;
+}
+
+.null {
+    color: magenta;
+}
+
+.key {
+    color: red;
+}
+
+.fullscreen {
+    position: absolute; width: 100%; height: 100%; border: none;
+}
+
+.flexcenter {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+}

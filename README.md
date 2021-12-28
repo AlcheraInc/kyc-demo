@@ -30,10 +30,11 @@
       "id_card_image_url": 신분증 민감정보 Masking 사진 ["data:image/jpeg;base64,/9j/4AAQSkZ..."],
       "id_crop_image_url": 신분증에서 얼굴 crop 사진 ["data:image/jpeg;base64,/9j/4AAQSkZ..."],
       "original_ocr_data": 신분증 OCR 결과(json 형식) ["{\"idType\":\"2\",\"userName\":\"홍길동\",\"driverNo\":[\"12\",\"03\",\"123456\",\"12\"],\"juminNo1\":\"990101\",\"juminNo2\":\"1001234\",\"_juminNo2\":\"1\",\"issueDate\":\"2017-01-01\",\"transaction_id\":\"4dd9c67508fb9e4489ec683dddd3f519\",\"driverNo1\":\"\",\"driverNo2\":\"11-03-123123-11\"}"],
-      "modified_ocr_data": 신분증 OCR 결과에서 사용자가 직접 수정한 내용 [""]
+      "modified_ocr_data": 신분증 OCR 결과에서 사용자가 직접 수정한 내용 ["{\"idType\":\"2\",\"userName\":\"임꺽정\",\"driverNo\":[\"12\",\"03\",\"123456\",\"12\"],\"juminNo1\":\"990101\",\"juminNo2\":\"1001234\",\"_juminNo2\":\"1\",\"issueDate\":\"2017-01-01\",\"transaction_id\":\"4dd9c67508fb9e4489ec683dddd3f519\",\"driverNo1\":\"\",\"driverNo2\":\"11-03-123123-11\"}"]
     },
     "face_check": { 안면인증 결과
-      "is_same_person": 신분증 얼굴사진 vs 셀피 얼굴사진 비교 결과 [true | false]
+      "is_same_person": 신분증 얼굴사진 vs 셀피 얼굴사진 비교 결과 [true | false],
+      "is_live": 셀피 얼굴사진 진위확인 [true | false]
       "selfie_image_url": 셀피 얼굴사진 ["data:image/jpeg;base64,/9j/4AAQSkZ..."]
     },
     "account": { 1원 계좌인증 결과

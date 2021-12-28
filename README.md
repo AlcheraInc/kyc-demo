@@ -1,7 +1,9 @@
 # kyc-iframe-sample
 
 # 주요 샘플 코드 (index.html)
-- 샘플코드 : https://github.com/AlcheraInc/kyc-iframe-sample/blob/main/index.html
+- 샘플코드 
+  - index.html : https://github.com/AlcheraInc/kyc-iframe-sample/blob/main/index.html
+  - kyc.js : https://github.com/AlcheraInc/kyc-iframe-sample/blob/main/js/kyc.js
 ---
 
 # postMessage 데이터 설명

@@ -1,3 +1,10 @@
+
+const KYC_TARGET_ORIGIN = "https://kyc.useb.co.kr";
+const KYC_URL = KYC_TARGET_ORIGIN + "/auth";
+// 고객사별 params 정보는 별도로 전달됩니다. 테스트를 위한 임시계정 정보이며, 운영을 위한 계정정보로 변경 필요
+// 계정정보는 하드코딩하지 않고 적절한 보안수준을 적용하여 관리 필요 (적절한 인증절차 후 내부 Server로 부터 받아오도록 관리 등)
+const KYC_PARAMS = {"customer_id": "2", "id": "user0001", "key": "Alchera0000!"};
+
 window.addEventListener("message", (e) => {
     console.log("alcherakyc response", e.data); // base64 encoded된 JSON 메시지이므로 decoded해야 함
     console.log("origin :", e.origin);
@@ -39,12 +46,8 @@ function iframeOnLoad(e) {
         return;
     }
 
-    // 고객사별 params 정보는 별도로 전달됩니다. 테스트를 위한 임시계정 정보이며, 운영을 위한 계정정보로 변경 필요
-    const params = {"customer_id": "2", "id": "user0001", "key": "Alchera0000!"};
-    const targetOrigin = "*"
-    encodedParams = btoa(JSON.stringify(params))
-    
-    kycIframe.contentWindow.postMessage(encodedParams, targetOrigin);
+    encodedParams = btoa(JSON.stringify(KYC_PARAMS))
+    kycIframe.contentWindow.postMessage(encodedParams, KYC_TARGET_ORIGIN);
 }
 
 function startKYC() {
@@ -69,7 +72,7 @@ function initKYC() {
 
     const kyc_iframe = document.getElementById("kyc_iframe")
     
-    kyc_iframe.src="https://kyc.useb.co.kr/auth"
+    kyc_iframe.src = KYC_URL;
 }
 
 function updateKYCResult(data, json) {

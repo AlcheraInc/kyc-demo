@@ -46,7 +46,7 @@ function iframeOnLoad(e) {
         return;
     }
 
-    encodedParams = btoa(JSON.stringify(KYC_PARAMS))
+    encodedParams = btoa(encodeURIComponent(JSON.stringify(KYC_PARAMS)))
     kycIframe.contentWindow.postMessage(encodedParams, KYC_TARGET_ORIGIN);
 }
 

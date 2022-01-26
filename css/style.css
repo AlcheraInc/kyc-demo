@@ -2,6 +2,26 @@ body {
     margin: 0;
 }
 
+ul li, ol li {
+    padding: 5px 0px 5px 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #efefef;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button {
+    background-color: #008CBA;
+    color: white;
+    
+    border: 2px solid #008CBA;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
 .syntaxHighlight {
     background-color: black;
     margin: 10px;
@@ -12,7 +32,7 @@ body {
 }
 
 .bright {
-    background-color: #eee; 
+    background-color: #eee;
     color: #222;
 }
 
@@ -58,9 +78,15 @@ body {
 }
 
 .fullscreen {
-    position: absolute; width: 100%; height: 100%; border: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 .flexcenter {
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

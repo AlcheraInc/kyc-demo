@@ -1,5 +1,6 @@
 
 const KYC_TARGET_ORIGIN = "https://kyc-production.useb.co.kr";
+//const KYC_TARGET_ORIGIN = "https://192.168.2.145:8085";
 //const KYC_TARGET_ORIGIN = "https://develop.d30g5uq5vz62d1.amplifyapp.com";
 const KYC_URL = KYC_TARGET_ORIGIN + "/auth";
 // 고객사별 params 정보는 별도로 전달됩니다. 테스트를 위한 임시계정 정보이며, 운영을 위한 계정정보로 변경 필요
@@ -59,8 +60,26 @@ function buttonOnClick(idx) {
     if (!kycIframe.src) {
         return;
     }
+    let params = KYC_PARAMS[idx];
 
-    encodedParams = btoa(encodeURIComponent(JSON.stringify(KYC_PARAMS[idx])));
+    if (document.getElementById('userinfo_type').value === 'param') {
+        params.name = document.getElementById('userinfo_name').value;
+        const birthday1 = document.getElementById('userinfo_birthday1').value;
+        const birthday2 = document.getElementById('userinfo_birthday2').value;
+        const birthday3 = document.getElementById('userinfo_birthday3').value;
+        params.birthday = birthday1 + "-" + birthday2 + "-" + birthday3;
+        params.phone_number = document.getElementById('userinfo_phone_number').value;
+        params.email = document.getElementById('userinfo_email').value;
+
+        params.customer_id = String(idx + 7);
+
+        if (!params.name || !birthday1 || !birthday2 || !birthday3 || !params.phone_number || !params.email) {
+            alert('필수 정보가 입력되지 않았습니다.');
+            return;
+        }
+    }
+
+    encodedParams = btoa(encodeURIComponent(JSON.stringify(params)));
     kycIframe.contentWindow.postMessage(encodedParams, KYC_TARGET_ORIGIN);
     startKYC();
 }

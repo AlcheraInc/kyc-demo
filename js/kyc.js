@@ -1,5 +1,5 @@
 
-const KYC_TARGET_ORIGIN = "https://kyc-production.useb.co.kr";
+const KYC_TARGET_ORIGIN = "https://kyc.useb.co.kr";
 //const KYC_TARGET_ORIGIN = "https://192.168.2.145:8085";
 //const KYC_TARGET_ORIGIN = "https://develop.d30g5uq5vz62d1.amplifyapp.com";
 const KYC_URL = KYC_TARGET_ORIGIN + "/auth";

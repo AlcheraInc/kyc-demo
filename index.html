@@ -9,6 +9,7 @@
     <title>eKYC Sample</title>
     <script src="js/util.js"></script>
     <script src="js/kyc.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 </head>
 
 <body onload="initKYC()">
@@ -17,7 +18,12 @@
 
         <h3>Step 1: 사용자 정보 입력 처리 방식 선택</h3>
         <select name="userinfo_type" id="userinfo_type"
-            onchange="javascript: (function(){((document.getElementById('userinfo_type').value === 'param') ? document.getElementById('userinfo_div').style.display = 'block' : document.getElementById('userinfo_div').style.display = 'none')})()">
+            onchange="javascript: (
+                function(){
+                    ((document.getElementById('userinfo_type').value === 'param') 
+                    ? document.getElementById('userinfo_div').style.display = 'block' 
+                    : document.getElementById('userinfo_div').style.display = 'none');
+                })()">
             <option value="use_input_ui">입력 UI 제공(사용자 정보 입력 처리를 useb.eKYC에 위임)</option>
             <option value="param">입력 UI 미제공(사용자 정보를 고객사에서 처리후 parameter로 전달)</option>
         </select>
@@ -25,12 +31,21 @@
 
         <div id="userinfo_div" style="display: none; border: 1px solid steelblue; margin: 10px; padding: 10px;">
             <h3>Step 1-2: 사용자 정보 입력</h3>
-            이름 <input id="userinfo_name" type="text" placeholder="홍길동" /><br />
-            생년월일 <input id="userinfo_birthday1" type="text" placeholder="YYYY" size=4 maxlength=4 />-<input
-                id="userinfo_birthday2" type="text" placeholder="MM" size=2 maxlength=2 />-<input
-                id="userinfo_birthday3" type="text" placeholder="DD" size=2 maxlength=2 /><br />
-            전화번호 <input id="userinfo_phone_number" type="text" placeholder="01012345678" /><br />
-            이메일 <input id="userinfo_email" type="text" placeholder="email.id@domain.net" /><br />
+            이름 <input id="userinfo_name" type="text" placeholder="홍길동" />
+            <br />
+            생년월일 
+            <input id="userinfo_birthday1" type="number" placeholder="YYYY" size=4 maxlength=4 
+                onkeydown="javascript: (
+                    function(e){
+                        event.target.value.length === event.target.maxLength
+                })()" />-
+            <input id="userinfo_birthday2" type="number" placeholder="MM" size=2 maxlength=2 />-
+            <input id="userinfo_birthday3" type="number" placeholder="DD" size=2 maxlength=2 />
+            <br />
+            전화번호 <input id="userinfo_phone_number" type="number" placeholder="01012345678" />
+            <br />
+            이메일 <input id="userinfo_email" type="text" placeholder="email.id@domain.net" />
+            <br />
         </div>
 
         <h3>Step 2: 체험하기 할 시나리오 선택</h3>

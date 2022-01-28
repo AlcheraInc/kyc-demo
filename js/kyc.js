@@ -60,7 +60,7 @@ function buttonOnClick(idx) {
     if (!kycIframe.src) {
         return;
     }
-    let params = KYC_PARAMS[idx];
+    let params = _.cloneDeep(KYC_PARAMS[idx]);
 
     if (document.getElementById('userinfo_type').value === 'param') {
         params.name = document.getElementById('userinfo_name').value;

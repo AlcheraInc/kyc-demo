@@ -107,6 +107,16 @@ function initKYC() {
     const kyc_iframe = document.getElementById("kyc_iframe")
 
     kyc_iframe.src = KYC_URL;
+
+    loadJS("js/event_handler");
+}
+
+function loadJS(path) {
+    var head= document.getElementsByTagName('head')[0];
+    var script= document.createElement('script');
+    script.type= 'text/javascript';
+    script.src= path + '.js';
+    head.appendChild(script)
 }
 
 function updateKYCResult(data, json) {

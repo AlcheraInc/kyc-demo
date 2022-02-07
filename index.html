@@ -28,23 +28,18 @@
             <option value="param">입력 UI 미제공(사용자 정보를 고객사에서 처리후 parameter로 전달)</option>
         </select>
 
-
         <div id="userinfo_div" style="display: none; border: 1px solid steelblue; margin: 10px; padding: 10px;">
             <h3>Step 1-2: 사용자 정보 입력</h3>
-            이름 <input id="userinfo_name" type="text" placeholder="홍길동" />
+            이름 <input id="userinfo_name" type="text" placeholder="홍길동" style="width: 50px;"/>
             <br />
             생년월일 
-            <input id="userinfo_birthday1" type="number" placeholder="YYYY" size=4 maxlength=4 
-                onkeydown="javascript: (
-                    function(e){
-                        event.target.value.length === event.target.maxLength
-                })()" />-
-            <input id="userinfo_birthday2" type="number" placeholder="MM" size=2 maxlength=2 />-
-            <input id="userinfo_birthday3" type="number" placeholder="DD" size=2 maxlength=2 />
+            <input id="userinfo_birthday1" type="number" placeholder="YYYY" maxlength=4 nextfocus="userinfo_birthday2" style="width: 60px;" />-
+            <input id="userinfo_birthday2" type="number" placeholder="MM" maxlength=2 nextfocus="userinfo_birthday3" style="width: 30px;" />-
+            <input id="userinfo_birthday3" type="number" placeholder="DD" maxlength=2 nextfocus="userinfo_phone_number" style="width: 30px;" />
             <br />
-            전화번호 <input id="userinfo_phone_number" type="number" placeholder="01012345678" />
+            전화번호 <input id="userinfo_phone_number" type="number" placeholder="01012345678" maxlength=11 />
             <br />
-            이메일 <input id="userinfo_email" type="text" placeholder="email.id@domain.net" />
+            이메일 <input id="userinfo_email" type="email" placeholder="email.id@domain.net"/>
             <br />
         </div>
 
@@ -79,6 +74,9 @@
                 신분증 확인(OCR/진위확인) + 얼굴 확인(비교) + 기존 계좌 인증
             </li>
         </ul>
+
+        <h3>이메일로 홍보중인 체험하기 링크 주소</h3>
+        <a href="https://kyc.useb.co.kr/auth?token=eyJjdXN0b21lcl9pZCI6ICIxIiwgImlkIjogInVzZXIwMDAxIiwgImtleSI6ICJBbGNoZXJhMDAwMCEifQ%3D%3D">체험하기 링크</a>
 
     </div>
 

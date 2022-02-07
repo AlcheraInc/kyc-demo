@@ -27,6 +27,7 @@ ul li, ol li {
 
 select {
     width: 90%;
+    max-width: 360px;
 }
 
 button {

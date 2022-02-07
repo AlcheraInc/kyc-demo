@@ -2,7 +2,6 @@
 document.querySelectorAll('input').forEach((element) => {
     element.onkeyup = (e) => {
         var target = e.srcElement || e.target;
-        console.log(e.key);
         if (!e || e.key === 'Tab' || e.key === 'Shift' || e.key === 'Process') {
             return;
         }
@@ -40,3 +39,16 @@ document.querySelectorAll('input').forEach((element) => {
         e.target.scrollIntoView();
     }
 })
+
+document.getElementById('userinfo_type').onchange = (e) => {
+    if(!e.target) {
+        return;
+    }
+
+    if (e.target.value === 'param') {
+        document.getElementById('userinfo_div').style.display = 'inline-block';
+    } else {
+        document.getElementById('userinfo_div').style.display = 'none';
+    }
+};
+

@@ -5,10 +5,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/css/style.css?ver=1.0.5" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css?ver=1.0.6" />
     <title>eKYC Sample</title>
-    <script src="js/util.js?ver=1.0.4"></script>
-    <script src="js/kyc.js?ver=1.0.4"></script>
+    <script src="js/util.js?ver=1.0.6"></script>
+    <script src="js/kyc.js?ver=1.0.6"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 </head>
 
@@ -16,18 +16,14 @@
     <div id="output" class="output" style="display: none;"></div>
     <div id="customer_start_ui" class="fullscreen customerUI" style="text-align: center;">
         <h3>Step 1: 사용자 정보 입력 처리 방식 선택</h3>
-        <select name="userinfo_type" id="userinfo_type"
-            onchange="javascript: (
-                function(){
-                    ((document.getElementById('userinfo_type').value === 'param') 
-                    ? document.getElementById('userinfo_div').style.display = 'block' 
-                    : document.getElementById('userinfo_div').style.display = 'none');
-                })()">
-            <option value="use_input_ui">입력 UI 제공(사용자 정보 입력 처리를 useb.eKYC에 위임)</option>
+        <select name="userinfo_type" id="userinfo_type">
             <option value="param">입력 UI 미제공(사용자 정보를 고객사에서 처리후 parameter로 전달)</option>
+            <option value="use_input_ui">입력 UI 제공(사용자 정보 입력 처리를 useb.eKYC에 위임)</option>
         </select>
 
-        <div id="userinfo_div" style="display: none; border: 1px solid steelblue; margin: 10px; padding: 10px;">
+        <br/>
+
+        <div id="userinfo_div" style="display: inline-block; border: 1px solid steelblue; margin: 10px; padding: 10px; max-width: 340px; width: 100%;">
             <h3>Step 1-2: 사용자 정보 입력</h3>
             이름 <input id="userinfo_name" type="text" placeholder="홍길동" style="width: 50px;" class="input_txt_kr" />
             <br />

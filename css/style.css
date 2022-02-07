@@ -43,6 +43,7 @@ button:hover {
 .imgBtn {
     cursor: pointer;
     width: 90%;
+    max-width: 360px;
 }
 
 .syntaxHighlight {

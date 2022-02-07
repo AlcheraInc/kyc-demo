@@ -11,7 +11,7 @@ body {
 
 ul
 {
-    list-style: none
+    list-style-type: none;
 }
 
 ul li, ol li {

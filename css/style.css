@@ -12,6 +12,7 @@ body {
 ul
 {
     list-style-type: none;
+    padding-inline-start: 0;
 }
 
 ul li, ol li {
@@ -22,6 +23,10 @@ ul li, ol li {
 */
     font-size: 11px;
     font-weight: bold;
+}
+
+select {
+    width: 90%;
 }
 
 button {
@@ -37,6 +42,7 @@ button:hover {
 
 .imgBtn {
     cursor: pointer;
+    width: 90%;
 }
 
 .syntaxHighlight {

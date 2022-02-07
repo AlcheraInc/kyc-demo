@@ -108,7 +108,7 @@ function initKYC() {
 
     kyc_iframe.src = KYC_URL;
 
-    loadJS("js/event_handler.js?ver=1.0.2");
+    loadJS("js/event_handler.js?ver=1.0.4");
 }
 
 function loadJS(path) {

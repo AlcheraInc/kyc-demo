@@ -86,21 +86,21 @@ function buttonOnClick(idx) {
 
 function startKYC() {
     document.getElementById('customer_start_ui').style.display = 'none';
-    document.getElementById('kyc').style.display = 'flex';
+    document.getElementById('kyc').style.display = 'block';
     document.getElementById('customer_end_ui').style.display = 'none';
 }
 
 function endKYC() {
     document.getElementById('customer_start_ui').style.display = 'none';
     document.getElementById('kyc').style.display = 'none';
-    document.getElementById('customer_end_ui').style.display = 'flex';
+    document.getElementById('customer_end_ui').style.display = 'block';
 }
 
 function initKYC() {
     document.getElementById('kyc_result').innerHTML = '';
     document.getElementById('kyc_status').innerHTML = '';
 
-    document.getElementById('customer_start_ui').style.display = 'flex';
+    document.getElementById('customer_start_ui').style.display = 'block';
     document.getElementById('kyc').style.display = 'none';
     document.getElementById('customer_end_ui').style.display = 'none';
 
@@ -108,15 +108,15 @@ function initKYC() {
 
     kyc_iframe.src = KYC_URL;
 
-    loadJS("js/event_handler");
+    loadJS("js/event_handler.js?ver=1.0.2");
 }
 
 function loadJS(path) {
     var head= document.getElementsByTagName('head')[0];
     var script= document.createElement('script');
     script.type= 'text/javascript';
-    script.src= path + '.js';
-    head.appendChild(script)
+    script.src= path;
+    head.appendChild(script);
 }
 
 function updateKYCResult(data, json) {

@@ -7,15 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <title>eKYC Sample</title>
-    <script src="js/util.js?ver=1.0.0"></script>
-    <script src="js/kyc.js?ver=1.0.0"></script>
+    <script src="js/util.js?ver=1.0.3"></script>
+    <script src="js/kyc.js?ver=1.0.3"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 </head>
 
 <body onload="initKYC()">
     <div id="output" class="output" style="display: none;"></div>
-    <div id="customer_start_ui" class="fullscreen flexcenter">
-
+    <div id="customer_start_ui" class="fullscreen customerUI" style="text-align: center;">
         <h3>Step 1: 사용자 정보 입력 처리 방식 선택</h3>
         <select name="userinfo_type" id="userinfo_type"
             onchange="javascript: (
@@ -30,7 +29,7 @@
 
         <div id="userinfo_div" style="display: none; border: 1px solid steelblue; margin: 10px; padding: 10px;">
             <h3>Step 1-2: 사용자 정보 입력</h3>
-            이름 <input id="userinfo_name" type="text" placeholder="홍길동" style="width: 50px;"/>
+            이름 <input id="userinfo_name" type="text" placeholder="홍길동" style="width: 50px;" class="input_txt_kr" />
             <br />
             생년월일 
             <input id="userinfo_birthday1" type="number" placeholder="YYYY" maxlength=4 nextfocus="userinfo_birthday2" style="width: 60px;" />-
@@ -46,49 +45,44 @@
         <h3>Step 2: 체험하기 할 시나리오 선택</h3>
         <ul>
             <li>
-                <button onclick="javascript: buttonOnClick(2);">useb.eKYC 체험하기 ▶</button>
-                신분증 확인(OCR/진위확인)
+                <img onclick="javascript: buttonOnClick(2);" src="img\id.svg" class="imgBtn" /><br/>
             </li>
             <li>
-                <button onclick="javascript: buttonOnClick(3);">useb.eKYC 체험하기 ▶</button>
-                신분증 확인(OCR/진위확인) + 얼굴 확인(비교)
+                <img onclick="javascript: buttonOnClick(3);" src="img\id_face.svg" class="imgBtn" /><br/>
             </li>
             <li>
-                <button onclick="javascript: buttonOnClick(4);">useb.eKYC 체험하기 ▶</button>
-                신분증 확인(OCR/진위확인) + 얼굴 확인(비교/라이브니스)
+                <img onclick="javascript: buttonOnClick(4);" src="img\id_face_live.svg" class="imgBtn" /><br/>
             </li>
             <li>
-                <button onclick="javascript: buttonOnClick(5);">useb.eKYC 체험하기 ▶</button>
-                신분증 확인(OCR/진위확인) + 얼굴 확인(비교/라이브니스) + 기존 계좌 인증
+                <img onclick="javascript: buttonOnClick(5);" src="img\id_face_live_account.svg" class="imgBtn" /><br/>
             </li>
             <li>
-                <button onclick="javascript: buttonOnClick(6);">useb.eKYC 체험하기 ▶</button>
-                기존 계좌 인증
+                <img onclick="javascript: buttonOnClick(6);" src="img\account.svg" class="imgBtn" /><br/>
             </li>
             <li>
-                <button onclick="javascript: buttonOnClick(7);">useb.eKYC 체험하기 ▶</button>
-                신분증 확인(OCR/진위확인) + 기존 계좌 인증
+                <img onclick="javascript: buttonOnClick(7);" src="img\id_account.svg" class="imgBtn" /><br/>
             </li>
             <li>
-                <button onclick="javascript: buttonOnClick(8);">useb.eKYC 체험하기 ▶</button>
-                신분증 확인(OCR/진위확인) + 얼굴 확인(비교) + 기존 계좌 인증
+                <img onclick="javascript: buttonOnClick(8);" src="img\id_face_account.svg" class="imgBtn" /><br/>
             </li>
         </ul>
 
-        <h3>이메일로 홍보중인 체험하기 링크 주소</h3>
-        <a href="https://kyc.useb.co.kr/auth?token=eyJjdXN0b21lcl9pZCI6ICIxIiwgImlkIjogInVzZXIwMDAxIiwgImtleSI6ICJBbGNoZXJhMDAwMCEifQ%3D%3D">체험하기 링크</a>
-
+        <h3>P.S: 이메일로 홍보중인 체험하기 링크 주소</h3>
+        <button onclick="javascript: window.location.href='https://kyc.useb.co.kr/auth?token=eyJjdXN0b21lcl9pZCI6ICIxIiwgImlkIjogInVzZXIwMDAxIiwgImtleSI6ICJBbGNoZXJhMDAwMCEifQ%3D%3D';">체험하기 링크</button>
+        <br/>
+        <br/>
     </div>
 
     <div id="kyc" class="fullscreen" style="display: none">
         <iframe id="kyc_iframe" class="fullscreen" allow="camera" onLoad="iframeOnLoad();"></iframe>
     </div>
 
-    <div id="customer_end_ui" class="fullscreen flexcenter" style="display: none">
-        <button onclick="initKYC();">처음부터 다시하기</button>
+    <div id="customer_end_ui" class="fullscreen customerUI" style="display: none;">
         <br />
+        <div id="kyc_status" style="text-align: center;"></div>
         <br />
-        <div id="kyc_status"></div>
+        <center><button onclick="initKYC();">처음부터 다시하기</button></center>
+        <br />
         <div id="kyc_result"></div>
     </div>
 </body>

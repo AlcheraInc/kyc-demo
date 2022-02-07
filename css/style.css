@@ -2,11 +2,25 @@ body {
     margin: 0;
 }
 
+.input_txt_kr {
+    -webkit-ime-mode: active;
+    -moz-ime-mode: active;
+    -ms-ime-mode: active;
+    ime-mode: active;
+}
+
+ul
+{
+    list-style: none
+}
+
 ul li, ol li {
+/*
     padding: 5px 0px 5px 5px;
     margin-bottom: 5px;
     border-bottom: 1px solid #efefef;
-    font-size: 16px;
+*/
+    font-size: 11px;
     font-weight: bold;
 }
 
@@ -21,6 +35,10 @@ button:hover {
     color: black;
 }
 
+.imgBtn {
+    cursor: pointer;
+}
+
 .syntaxHighlight {
     background-color: black;
     margin: 10px;
@@ -33,6 +51,7 @@ button:hover {
 .bright {
     background-color: #eee;
     color: #222;
+    width: 100%;
 }
 
 .popupSize {
@@ -83,9 +102,7 @@ button:hover {
     border: none;
 }
 
-.flexcenter {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.customerUI {
+    overflow-x: block;
+    overflow-y: auto;
 }

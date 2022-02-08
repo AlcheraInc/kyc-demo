@@ -1,0 +1,115 @@
+.customer--header {
+  background: url('../img//BG\ graphic.svg');
+
+  width: 100%;
+}
+.customer--section {
+  width: 90%;
+  margin: 0 auto;
+}
+.customer--headline {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+  color: #5f65ff;
+
+  margin-top: 80px;
+  margin-bottom: 60px;
+}
+.customer--select-box {
+  border: 1px solid #ced1d2;
+  box-sizing: border-box;
+  border-radius: 8px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+}
+.customer--select-input {
+  margin-right: 1rem;
+}
+.customer--select-check {
+  width: 16px;
+  height: 16px;
+  /* background: #f7f7f7; */
+  border: 1.2px solid #ced1d2;
+  box-sizing: border-box;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.customer--select-check.checked {
+  background-color: #373eff;
+  border: none;
+}
+.customer--title {
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #363636;
+}
+.customer--label {
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 12px;
+
+  color: #868686;
+}
+.customer--division {
+  width: 100%;
+  height: 1px;
+  background-color: #ced1d2;
+  margin: 60px 0px;
+}
+.customer--input {
+  width: 100%;
+  height: 64px;
+  font-size: 20px;
+  padding: 16px 24px;
+  border: 1px solid #cccccc;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.customer--btn {
+  width: 100%;
+  height: 64px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 16px;
+  background: #373eff;
+  border-radius: 8px;
+
+  /* text */
+  /* KR/Button 3 - 16 */
+
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  color: #ffffff;
+}
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.text-start {
+  text-align: start;
+}
+.justify-center {
+  justify-content: center;
+}

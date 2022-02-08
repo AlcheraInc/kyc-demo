@@ -1,86 +1,242 @@
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="/css/style.css?ver=1.0.6" />
+    <link rel="stylesheet" href="/css//custom.css?ver=0.0.1" type="text/css" />
     <title>eKYC Sample</title>
     <script src="js/util.js?ver=1.0.6"></script>
     <script src="js/kyc.js?ver=1.0.6"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
-</head>
+  </head>
 
-<body onload="initKYC()">
-    <div id="output" class="output" style="display: none;"></div>
-    <div id="customer_start_ui" class="fullscreen customerUI" style="text-align: center;">
-        <h3>Step 1: 사용자 정보 입력 처리 방식 선택</h3>
-        <select name="userinfo_type" id="userinfo_type">
-            <option value="param">입력 UI 미제공(사용자 정보를 고객사에서 처리후 parameter로 전달)</option>
-            <option value="use_input_ui">입력 UI 제공(사용자 정보 입력 처리를 useb.eKYC에 위임)</option>
-        </select>
-
-        <br/>
-
-        <div id="userinfo_div" style="display: inline-block; border: 1px solid steelblue; margin: 10px; padding: 10px; max-width: 340px; width: 100%;">
-            <h3>Step 1-2: 사용자 정보 입력</h3>
-            이름 <input id="userinfo_name" type="text" placeholder="홍길동" style="width: 50px;" class="input_txt_kr" />
-            <br />
-            생년월일 
-            <input id="userinfo_birthday1" type="number" placeholder="YYYY" maxlength=4 nextfocus="userinfo_birthday2" style="width: 60px;" />-
-            <input id="userinfo_birthday2" type="number" placeholder="MM" maxlength=2 nextfocus="userinfo_birthday3" style="width: 30px;" />-
-            <input id="userinfo_birthday3" type="number" placeholder="DD" maxlength=2 nextfocus="userinfo_phone_number" style="width: 30px;" />
-            <br />
-            전화번호 <input id="userinfo_phone_number" type="number" placeholder="01012345678" maxlength=11 />
-            <br />
-            이메일 <input id="userinfo_email" type="email" placeholder="email.id@domain.net"/>
-            <br />
+  <body onload="initKYC()">
+    <div id="output" class="output" style="display: none"></div>
+    <div
+      id="customer_start_ui"
+      class="fullscreen customerUI"
+      style="text-align: center"
+    >
+      <img src="./img//BG graphic.svg" alt="bg" class="customer--header" />
+      <div class="customer--section">
+        <h3 class="customer--headline">개인정보 옵션</h3>
+        <div
+          class="flex customer--select-box"
+          id="param"
+          style="margin-bottom: 16px"
+        >
+          <div class="customer--select-check" style="margin-right: 18px">
+            <img src="./img//Vector.svg" alt="check" />
+          </div>
+          <div class="flex flex-col" style="text-align: start">
+            <span class="customer--title" style="margin-bottom: 8px"
+              >고객사에서 사용자 필수정보를 관리 중</span
+            >
+            <span class="customer--label"
+              >사용자 필수정보를 parameter로 전달</span
+            >
+          </div>
         </div>
+        <div class="flex customer--select-box" id="use_input_ui">
+          <div class="customer--select-check" style="margin-right: 18px">
+            <img src="./img//Vector.svg" alt="check" />
+          </div>
+          <div class="flex flex-col" style="text-align: start">
+            <span class="customer--title" style="margin-bottom: 8px">
+              고객사에서 사용자 필수정보를 관리 안함
+            </span>
+            <span class="customer--label">
+              사용자 필수정보 입력을 useB.eKYC에 위임
+            </span>
+          </div>
+        </div>
+        <div></div>
+      </div>
+      <select name="userinfo_type" id="userinfo_type" style="display: none">
+        <option value="param">
+          입력 UI 미제공(사용자 정보를 고객사에서 처리후 parameter로 전달)
+        </option>
+        <option value="use_input_ui">
+          입력 UI 제공(사용자 정보 입력 처리를 useb.eKYC에 위임)
+        </option>
+      </select>
+      <div class="customer--division" id="userinfo-division"></div>
 
-        <h3>Step 2: 체험하기 할 시나리오 선택</h3>
+      <div id="userinfo_div" class="customer--section">
+        <h3 class="customer--title" style="font-size: 20px; margin-top: 0px">
+          테스트할 신분증 정보를 입력해주세요.
+        </h3>
+        <h6 class="customer--label" style="font-size: 14px; line-height: 24px">
+          실제 프로세스에서 해당 단계는 고객사내부의 데이터베이스의 사용자
+          필수정보를 parameter로 전달하게 됩니다.
+        </h6>
+        <div class="flex flex-col text-start">
+          <span class="customer--label" style="margin-bottom: 8px">이름</span>
+          <input
+            id="userinfo_name"
+            type="text"
+            placeholder="홍길동"
+            class="input_txt_kr customer--input"
+          />
+        </div>
+        <br />
+        <div class="flex flex-col text-start">
+          <span class="customer--label" style="margin-bottom: 8px">
+            생년월일
+          </span>
+          <div>
+            <input
+              id="userinfo_birthday1"
+              type="number"
+              placeholder="YYYY"
+              maxlength="4"
+              nextfocus="userinfo_birthday2"
+              style="width: 120px"
+              class="customer--input"
+            />-
+            <input
+              id="userinfo_birthday2"
+              type="number"
+              placeholder="MM"
+              maxlength="2"
+              nextfocus="userinfo_birthday3"
+              style="width: 86px"
+              class="customer--input"
+            />-
+            <input
+              id="userinfo_birthday3"
+              type="number"
+              placeholder="DD"
+              maxlength="2"
+              nextfocus="userinfo_phone_number"
+              style="width: 86px"
+              class="customer--input"
+            />
+          </div>
+        </div>
+        <br />
+        <div class="flex flex-col text-start">
+          <span class="customer--label" style="margin-bottom: 8px">
+            전화번호
+          </span>
+          <input
+            id="userinfo_phone_number"
+            type="number"
+            placeholder="01012345678"
+            maxlength="11"
+            class="customer--input"
+          />
+        </div>
+        <br />
+        <div class="flex flex-col text-start" style="margin-bottom: 75px">
+          <span class="customer--label" style="margin-bottom: 8px">
+            이메일
+          </span>
+          <input
+            id="userinfo_email"
+            type="email"
+            placeholder="email.id@domain.net"
+            class="customer--input"
+          />
+        </div>
+        <!-- <button id="userinfo--btn" class="customer--btn">
+          사용자 정보 입력 완료
+        </button> -->
+      </div>
+      <div class="customer--division"></div>
+
+      <div class="customer--section" id="logic-options">
+        <h3 class="customer--headline">기능 선택 옵션</h3>
         <ul>
-            <li>
-                <img onclick="javascript: buttonOnClick(2);" src="img\id.svg" class="imgBtn" /><br/>
-            </li>
-            <li>
-                <img onclick="javascript: buttonOnClick(3);" src="img\id_face.svg" class="imgBtn" /><br/>
-            </li>
-            <li>
-                <img onclick="javascript: buttonOnClick(4);" src="img\id_face_live.svg" class="imgBtn" /><br/>
-            </li>
-            <li>
-                <img onclick="javascript: buttonOnClick(5);" src="img\id_face_live_account.svg" class="imgBtn" /><br/>
-            </li>
-            <li>
-                <img onclick="javascript: buttonOnClick(6);" src="img\account.svg" class="imgBtn" /><br/>
-            </li>
-            <li>
-                <img onclick="javascript: buttonOnClick(7);" src="img\id_account.svg" class="imgBtn" /><br/>
-            </li>
-            <li>
-                <img onclick="javascript: buttonOnClick(8);" src="img\id_face_account.svg" class="imgBtn" /><br/>
-            </li>
+          <li>
+            <img
+              onclick="javascript: buttonOnClick(2);"
+              src="img\id.svg"
+              class="imgBtn"
+            /><br />
+          </li>
+          <li>
+            <img
+              onclick="javascript: buttonOnClick(3);"
+              src="img\id_face.svg"
+              class="imgBtn"
+            /><br />
+          </li>
+          <li>
+            <img
+              onclick="javascript: buttonOnClick(4);"
+              src="img\id_face_live.svg"
+              class="imgBtn"
+            /><br />
+          </li>
+          <li>
+            <img
+              onclick="javascript: buttonOnClick(5);"
+              src="img\id_face_live_account.svg"
+              class="imgBtn"
+            /><br />
+          </li>
+          <li>
+            <img
+              onclick="javascript: buttonOnClick(6);"
+              src="img\account.svg"
+              class="imgBtn"
+            /><br />
+          </li>
+          <li>
+            <img
+              onclick="javascript: buttonOnClick(7);"
+              src="img\id_account.svg"
+              class="imgBtn"
+            /><br />
+          </li>
+          <li>
+            <img
+              onclick="javascript: buttonOnClick(8);"
+              src="img\id_face_account.svg"
+              class="imgBtn"
+            /><br />
+          </li>
         </ul>
-
-        <h3>P.S: 이메일로 홍보중인 체험하기 링크 주소</h3>
-        <button onclick="javascript: window.location.href='https://kyc.useb.co.kr/auth?token=eyJjdXN0b21lcl9pZCI6ICIxIiwgImlkIjogInVzZXIwMDAxIiwgImtleSI6ICJBbGNoZXJhMDAwMCEifQ%3D%3D';">체험하기 링크</button>
-        <br/>
-        <br/>
+      </div>
+      <div class="customer--section">
+        <h3 class="customer--title" style="font-size: 20px">
+          P.S: 이메일로 홍보중인 체험하기 링크 주소
+        </h3>
+        <button
+          class="customer--btn"
+          onclick="javascript: window.location.href='https://kyc.useb.co.kr/auth?token=eyJjdXN0b21lcl9pZCI6ICIxIiwgImlkIjogInVzZXIwMDAxIiwgImtleSI6ICJBbGNoZXJhMDAwMCEifQ%3D%3D';"
+        >
+          체험하기 링크
+        </button>
+      </div>
+      <br />
+      <br />
     </div>
 
     <div id="kyc" class="fullscreen" style="display: none">
-        <iframe id="kyc_iframe" class="fullscreen" allow="camera" onLoad="iframeOnLoad();"></iframe>
+      <iframe
+        id="kyc_iframe"
+        class="fullscreen"
+        allow="camera"
+        onLoad="iframeOnLoad();"
+      ></iframe>
     </div>
 
-    <div id="customer_end_ui" class="fullscreen customerUI" style="display: none;">
-        <br />
-        <div id="kyc_status" style="text-align: center;"></div>
-        <br />
-        <center><button onclick="initKYC();">처음부터 다시하기</button></center>
-        <br />
-        <div id="kyc_result"></div>
+    <div
+      id="customer_end_ui"
+      class="fullscreen customerUI"
+      style="display: none"
+    >
+      <br />
+      <div id="kyc_status" style="text-align: center"></div>
+      <br />
+      <center><button onclick="initKYC();">처음부터 다시하기</button></center>
+      <br />
+      <div id="kyc_result"></div>
     </div>
-</body>
-
+  </body>
+  <script src="./js/ui_handler.js"></script>
 </html>

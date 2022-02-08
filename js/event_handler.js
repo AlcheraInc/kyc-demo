@@ -5,7 +5,7 @@ document.querySelectorAll('input').forEach((element) => {
         if (!e || e.key === 'Tab' || e.key === 'Shift' || e.key === 'Process') {
             return;
         }
-        if(!target || !target.attributes["maxlength"]) {
+        if (!target || !target.attributes["maxlength"]) {
             return;
         }
         var maxLength = parseInt(target.attributes["maxlength"].value, 10);
@@ -41,7 +41,8 @@ document.querySelectorAll('input').forEach((element) => {
 })
 
 document.getElementById('userinfo_type').onchange = (e) => {
-    if(!e.target) {
+    console.log('changed')
+    if (!e.target) {
         return;
     }
 

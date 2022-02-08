@@ -19,7 +19,16 @@
       class="fullscreen customerUI"
       style="text-align: center"
     >
-      <img src="./img//BG graphic.svg" alt="bg" class="customer--header" />
+      <div
+        class="customer--header"
+        style="
+          background: no-repeat url('./img/BG\ graphic.svg');
+          background-size: cover;
+        "
+      >
+        eKYC Test
+      </div>
+
       <div class="customer--section">
         <h3 class="customer--headline">개인정보 옵션</h3>
         <div
@@ -95,14 +104,14 @@
               nextfocus="userinfo_birthday2"
               style="width: 120px"
               class="customer--input"
-            />-
+            />
             <input
               id="userinfo_birthday2"
               type="number"
               placeholder="MM"
               maxlength="2"
               nextfocus="userinfo_birthday3"
-              style="width: 86px"
+              style="width: 92px"
               class="customer--input"
             />-
             <input
@@ -111,7 +120,7 @@
               placeholder="DD"
               maxlength="2"
               nextfocus="userinfo_phone_number"
-              style="width: 86px"
+              style="width: 92px"
               class="customer--input"
             />
           </div>
@@ -202,7 +211,7 @@
         </ul>
       </div>
       <div class="customer--section">
-        <h3 class="customer--title" style="font-size: 20px">
+        <h3 class="customer--headline" style="color: #363636">
           P.S: 이메일로 홍보중인 체험하기 링크 주소
         </h3>
         <button

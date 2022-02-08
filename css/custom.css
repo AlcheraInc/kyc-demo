@@ -1,23 +1,40 @@
 .customer--header {
-  background: url('../img//BG\ graphic.svg');
+  background: url('../img/header.svg');
 
-  width: 100%;
+  /* background: no-repeat url("../../media/examples/lizard.png"); */
+  /* width: 100%; */
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 2rem;
+  line-height: 48px;
+  padding: 24px 0px;
+  background-color: #373eff;
+  /* identical to box height, or 150% */
+
+  text-align: center;
+
+  /* White */
+
+  color: #ffffff;
 }
 .customer--section {
   width: 90%;
   margin: 0 auto;
+  max-width: 360px;
 }
 .customer--headline {
   font-family: Nunito;
   font-style: normal;
   font-weight: bold;
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
   text-align: center;
   color: #5f65ff;
 
-  margin-top: 80px;
-  margin-bottom: 60px;
+  margin-top: 45px;
+  margin-bottom: 45px;
 }
 .customer--select-box {
   border: 1px solid #ced1d2;
@@ -50,16 +67,16 @@
   font-family: Noto Sans KR;
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: #363636;
 }
 .customer--label {
   font-family: Noto Sans KR;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
-  line-height: 12px;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
 
   color: #868686;
 }
@@ -72,7 +89,8 @@
 .customer--input {
   width: 100%;
   height: 64px;
-  font-size: 20px;
+  font-size: 1.25rem;
+  font-size: 1rem;
   padding: 16px 24px;
   border: 1px solid #cccccc;
   box-sizing: border-box;
@@ -97,9 +115,15 @@
   font-family: Noto Sans KR;
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 23px;
   color: #ffffff;
+}
+.imgBtn {
+  margin-bottom: 1rem;
+}
+li:last-child .imgBtn {
+  margin-bottom: 0px;
 }
 .flex {
   display: flex;
@@ -112,4 +136,13 @@
 }
 .justify-center {
   justify-content: center;
+}
+
+@media (max-width: 414px) {
+  .customer--title {
+    font-size: 0.875rem;
+    /* line-height: 1.5rem; */
+  }
+  .imgBtn {
+  }
 }

@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/css/style.css?ver=1.0.6" />
-    <link rel="stylesheet" href="/css//custom.css?ver=0.0.1" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css?ver=1.0.7" />
+    <link rel="stylesheet" type="text/css" href="./css//custom.css?ver=1.0.7" />
     <title>eKYC Sample</title>
-    <script src="js/util.js?ver=1.0.6"></script>
-    <script src="js/kyc.js?ver=1.0.6"></script>
+    <script src="./js/util.js?ver=1.0.7"></script>
+    <script src="./js/kyc.js?ver=1.0.7"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
   </head>
 
@@ -210,10 +210,11 @@
           </li>
         </ul>
       </div>
+
+      <div class="customer--division"></div>
+
       <div class="customer--section">
-        <h3 class="customer--headline" style="color: #363636">
-          P.S: 이메일로 홍보중인 체험하기 링크 주소
-        </h3>
+        <h3 class="customer--headline">이메일로 홍보중인 체험하기 링크 주소</h3>
         <button
           class="customer--btn"
           onclick="javascript: window.location.href='https://kyc.useb.co.kr/auth?token=eyJjdXN0b21lcl9pZCI6ICIxIiwgImlkIjogInVzZXIwMDAxIiwgImtleSI6ICJBbGNoZXJhMDAwMCEifQ%3D%3D';"
@@ -240,12 +241,15 @@
       style="display: none"
     >
       <br />
-      <div id="kyc_status" style="text-align: center"></div>
+      <div id="kyc_status" style="text-align: center"></div> 
       <br />
-      <center><button onclick="initKYC();">처음부터 다시하기</button></center>
+      <div style="text-align: center; width: 100%;">
+        <button onclick="initKYC();">처음부터 다시하기</button>
+      </div>
       <br />
       <div id="kyc_result"></div>
     </div>
   </body>
-  <script src="./js/ui_handler.js"></script>
+  <script src="./js/ui_handler.js?ver=1.0.7"></script>
+  <script src="./js/event_handler.js?ver=1.0.7"></script>
 </html>

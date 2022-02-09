@@ -58,7 +58,7 @@ function iframeOnLoad(e) {
 function buttonOnClick(idx) {
     const kycIframe = document.getElementById("kyc_iframe");
     if (!kycIframe.src) {
-        return;
+        kyc_iframe.src = KYC_URL;
     }
     let params = _.cloneDeep(KYC_PARAMS[idx]);
 
@@ -103,10 +103,6 @@ function initKYC() {
     document.getElementById('customer_start_ui').style.display = 'block';
     document.getElementById('kyc').style.display = 'none';
     document.getElementById('customer_end_ui').style.display = 'none';
-
-    const kyc_iframe = document.getElementById("kyc_iframe")
-
-    kyc_iframe.src = KYC_URL;
 }
 
 function updateKYCResult(data, json) {

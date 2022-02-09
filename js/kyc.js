@@ -79,11 +79,23 @@ function buttonOnClick(idx) {
     
         encodedParams = btoa(encodeURIComponent(JSON.stringify(params)));
         kycIframe.contentWindow.postMessage(encodedParams, KYC_TARGET_ORIGIN);
+        hideLoadingUI();
         startKYC();
         kycIframe.onload = null;
     }
     
     kycIframe.src = KYC_URL;
+    showLoadingUI();
+}
+
+function showLoadingUI()
+{
+    document.getElementById('loading_ui').style.display = 'flex';
+}
+
+function hideLoadingUI()
+{
+    document.getElementById('loading_ui').style.display = 'none';
 }
 
 function startKYC() {

@@ -1,9 +1,9 @@
-const paramBox = document.getElementById('param')
-const useInputUiBox = document.getElementById('use_input_ui')
-const userinfoTypeSelect = document.getElementById('userinfo_type')
-const userinfoDivision = document.getElementById('userinfo-division')
+const paramBox = document.getElementById('param');
+const useInputUiBox = document.getElementById('use_input_ui');
+const userinfoTypeSelect = document.getElementById('userinfo_type');
+const userinfoDivision = document.getElementById('userinfo-division');
 const changeEvent = document.createEvent("HTMLEvents");
-// const userinfoBtn = document.getElementById('userinfo--btn')
+// const userinfoBtn = document.getElementById('userinfo--btn');
 
 changeEvent.initEvent("change", true, false);
 
@@ -16,16 +16,16 @@ changeEvent.initEvent("change", true, false);
 // })
 
 paramBox.addEventListener('click', () => {
-    document.querySelector('#param .customer--select-check').classList.add('checked')
-    document.querySelector('#use_input_ui .customer--select-check').classList.remove('checked')
-    userinfoTypeSelect.options[0].selected = true
-    userinfoTypeSelect.dispatchEvent(changeEvent)
+    document.querySelector('#param .customer--select-check').classList.add('checked');
+    document.querySelector('#use_input_ui .customer--select-check').classList.remove('checked');
+    userinfoTypeSelect.options[0].selected = true;
+    userinfoTypeSelect.dispatchEvent(changeEvent);
     userinfoDivision.style.display = 'block'
-})
+});
 useInputUiBox.addEventListener('click', () => {
-    document.querySelector('#use_input_ui .customer--select-check').classList.add('checked')
-    document.querySelector('#param .customer--select-check').classList.remove('checked')
-    userinfoTypeSelect.options[1].selected = true
-    userinfoTypeSelect.dispatchEvent(changeEvent)
+    document.querySelector('#use_input_ui .customer--select-check').classList.add('checked');
+    document.querySelector('#param .customer--select-check').classList.remove('checked');
+    userinfoTypeSelect.options[1].selected = true;
+    userinfoTypeSelect.dispatchEvent(changeEvent);
     userinfoDivision.style.display = 'none';
-})
+});

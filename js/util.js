@@ -1,14 +1,17 @@
-function removeOutput() {
-    const div = document.getElementById("output");
+function removeDebugWin() {
+    const div = document.getElementById("debug_win");
     div.style.display = 'none';
     div.innerHTML = '';
 }
 
-function output(inp) {
-    const div = document.getElementById("output");
+function updateDebugWin(inp) {
+    if (document.getElementById("debug_win_checkbox").checked === false) {
+        return;
+    }
+    const div = document.getElementById("debug_win");
     const closeBtn = document.createElement("div");
     closeBtn.className = "closeBtn";
-    closeBtn.innerHTML = "[DEBUG] postMessage 수신 &nbsp;&nbsp;&nbsp; <span onclick='javascript:removeOutput()'><b>[X]</b></span>";
+    closeBtn.innerHTML = "[DEBUG] postMessage 수신 &nbsp;&nbsp;&nbsp; <span onclick='javascript:removeDebugWin()'><b>[X]</b></span>";
     const pre = document.createElement("pre");
     pre.className = "syntaxHighlight popupSize";
     pre.innerHTML = inp;

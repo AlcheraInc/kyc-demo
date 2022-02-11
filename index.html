@@ -4,30 +4,42 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="./css/style.css?ver=1.0.7" />
-    <link rel="stylesheet" type="text/css" href="./css//custom.css?ver=1.0.7" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css?ver=1.0.11" />
+    <link rel="stylesheet" type="text/css" href="./css//custom.css?ver=1.0.11" />
     <title>eKYC Sample</title>
-    <script src="./js/util.js?ver=1.0.7"></script>
-    <script src="./js/kyc.js?ver=1.0.10"></script>
+    <script src="./js/util.js?ver=1.0.11"></script>
+    <script src="./js/kyc.js?ver=1.0.11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
   </head>
 
   <body onload="initKYC()">
-    <div id="output" class="output" style="display: none"></div>
+    <div id="debug_win" class="debug_win" style="display: none"></div>
     <div
       id="customer_start_ui"
       class="fullscreen customerUI"
       style="text-align: center"
     >
-      <div
-        class="customer--header"
+      <div class="customer--header"
         style="
-          background: no-repeat url('./img/BG\ graphic.svg');
+          background: no-repeat url('./img/bg_graphic.svg');
           background-size: cover;
-        "
-      >
+        ">
         eKYC Test
       </div>
+
+      <div class="customer--section">
+        <h3 class="customer--headline">Debug Window 설정</h3>
+        <h6 class="customer--label" style="font-size: 14px; line-height: 24px">
+          활성화하면 PostMessage를 수신하는 시점과 수신 내용을 Debug Window를 통해 보여줍니다.
+        </h6>
+        <label class="switch">
+          <input id="debug_win_checkbox" type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+
+      <div class="customer--division"></div>
+
 
       <div class="customer--section">
         <h3 class="customer--headline">개인정보 옵션</h3>
@@ -37,20 +49,18 @@
           style="margin-bottom: 16px"
         >
           <div class="customer--select-check" style="margin-right: 18px">
-            <img src="./img//Vector.svg" alt="check" />
+            <img src="./img/vector.svg" alt="check" />
           </div>
           <div class="flex flex-col" style="text-align: start">
             <span class="customer--title" style="margin-bottom: 8px"
-              >고객사에서 사용자 필수정보를 관리 중</span
-            >
+              >고객사에서 사용자 필수정보를 관리 중</span>
             <span class="customer--label"
-              >사용자 필수정보를 parameter로 전달</span
-            >
+              >사용자 필수정보를 parameter로 전달</span>
           </div>
         </div>
         <div class="flex customer--select-box" id="use_input_ui">
           <div class="customer--select-check" style="margin-right: 18px">
-            <img src="./img//Vector.svg" alt="check" />
+            <img src="./img/vector.svg" alt="check" />
           </div>
           <div class="flex flex-col" style="text-align: start">
             <span class="customer--title" style="margin-bottom: 8px">
@@ -240,14 +250,26 @@
       class="fullscreen customerUI"
       style="display: none"
     >
-      <br />
-      <div id="kyc_status" style="text-align: center"></div> 
-      <br />
-      <div style="text-align: center; width: 100%;">
-        <button onclick="initKYC();">처음부터 다시하기</button>
+      <div class="customer--header" style="
+          background: no-repeat url('./img/bg_graphic.svg');
+          background-size: cover;
+        ">
+        eKYC Test Result
       </div>
-      <br />
-      <div id="kyc_result"></div>
+
+      <div class="customer--section">
+        <div id="kyc_status" class="customer--headline"></div>
+      </div>
+
+      <div class="customer--section">
+        <button class="customer--btn" onclick="initKYC();">
+          처음부터 다시하기
+        </button>
+      </div>
+
+      <div class="customer--division"></div>
+
+      <div id="kyc_result" class="customer--section"></div>
     </div>
 
     <div id="loading_ui" class="fullscreen" style="display: none; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items:center; font-size: 2rem;color: white;">
@@ -255,6 +277,6 @@
     </div>
 
   </body>
-  <script src="./js/ui_handler.js?ver=1.0.7"></script>
-  <script src="./js/event_handler.js?ver=1.0.7"></script>
+  <script src="./js/ui_handler.js?ver=1.0.11"></script>
+  <script src="./js/event_handler.js?ver=1.0.11"></script>
 </html>

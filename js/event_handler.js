@@ -1,17 +1,17 @@
 
 document.querySelectorAll('input').forEach((element) => {
     element.onkeyup = (e) => {
-        var target = e.srcElement || e.target;
+        const target = e.srcElement || e.target;
         if (!e || e.key === 'Tab' || e.key === 'Shift' || e.key === 'Process') {
             return;
         }
         if (!target || !target.attributes["maxlength"]) {
             return;
         }
-        var maxLength = parseInt(target.attributes["maxlength"].value, 10);
-        var myLength = target.value.length;
+        const maxLength = parseInt(target.attributes["maxlength"].value, 10);
+        const myLength = target.value.length;
         if (myLength >= maxLength) {
-            var next = target;
+            let next = target;
             while (next = next.nextElementSibling) {
                 if (next == null)
                     break;
@@ -23,9 +23,9 @@ document.querySelectorAll('input').forEach((element) => {
         }
         // Move to previous field if empty (user pressed backspace)
         else if (myLength === 0) {
-            var previous = target;
+            let previous = target;
             while (previous = previous.previousElementSibling) {
-                if (previous == null)
+                if (previous === null)
                     break;
                 if (previous.tagName.toLowerCase() === "input") {
                     previous.focus();
@@ -33,15 +33,14 @@ document.querySelectorAll('input').forEach((element) => {
                 }
             }
         }
-    }
+    };
 
     element.onfocus = (e) => {
         e.target.scrollIntoView();
     }
-})
+});
 
 document.getElementById('userinfo_type').onchange = (e) => {
-    console.log('changed')
     if (!e.target) {
         return;
     }

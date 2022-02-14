@@ -23,10 +23,37 @@ window.addEventListener("message", (e) => {
         const decodedData = decodeURIComponent(atob(e.data));
         console.log("decoded", decodedData);
         const json = JSON.parse(decodedData);
-        const str = JSON.stringify(json, undefined, 4);
         console.log("json", json);
 
         console.log(json.result + "처리 필요");
+
+        let json2 = _.cloneDeep(json);
+        if (json2 && json2.review_result && json2.review_result.id_card) {
+            const review_result = json2 && json2.review_result;
+
+            if (review_result.id_card) {
+                const id_card = review_result.id_card;
+                if (id_card.id_card_image) {
+                    id_card.id_card_image = id_card.id_card_image.substring(0, 20) + "...생략...";
+                }
+                if (id_card.id_card_origin) {
+                    id_card.id_card_origin = id_card.id_card_origin.substring(0, 20) + "...생략...";
+                }
+                if (id_card.id_crop_image) {
+                    id_card.id_crop_image = id_card.id_crop_image.substring(0, 20) + "...생략...";
+                }
+            }
+
+            if (review_result.face_check) {
+                const face_check = review_result.face_check;
+                if (face_check.selfie_image) {
+                    face_check.selfie_image = face_check.selfie_image.substring(0, 20) + "...생략...";
+                }
+            }
+
+        }
+
+        const str = JSON.stringify(json2, undefined, 4);
         const strHighlight = syntaxHighlight(str);
 
         if (json.result === "success") {

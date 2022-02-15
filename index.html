@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="./css/style.css?ver=1.0.11" />
-    <link rel="stylesheet" type="text/css" href="./css//custom.css?ver=1.0.11" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css?ver=1.0.13" />
+    <link rel="stylesheet" type="text/css" href="./css//custom.css?ver=1.0.13" />
     <title>eKYC Sample</title>
-    <script src="./js/util.js?ver=1.0.12"></script>
-    <script src="./js/kyc.js?ver=1.0.12"></script>
+    <script src="./js/util.js?ver=1.0.13"></script>
+    <script src="./js/kyc.js?ver=1.0.13"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
   </head>
 
@@ -105,35 +105,14 @@
           <span class="customer--label" style="margin-bottom: 8px">
             생년월일
           </span>
-          <div>
-            <input
-              id="userinfo_birthday1"
-              type="number"
-              placeholder="YYYY"
-              maxlength="4"
-              nextfocus="userinfo_birthday2"
-              style="width: 120px"
-              class="customer--input"
-            />
-            <input
-              id="userinfo_birthday2"
-              type="number"
-              placeholder="MM"
-              maxlength="2"
-              nextfocus="userinfo_birthday3"
-              style="width: 92px"
-              class="customer--input"
-            />-
-            <input
-              id="userinfo_birthday3"
-              type="number"
-              placeholder="DD"
-              maxlength="2"
-              nextfocus="userinfo_phone_number"
-              style="width: 92px"
-              class="customer--input"
-            />
-          </div>
+          <input
+                  id="userinfo_birthday"
+                  type="text"
+                  placeholder="YYYY-MM-DD"
+                  maxlength="10"
+                  nextfocus="userinfo_phone_number"
+                  class="customer--input"
+          />
         </div>
         <br />
         <div class="flex flex-col text-start">
@@ -277,6 +256,6 @@
     </div>
 
   </body>
-  <script src="./js/ui_handler.js?ver=1.0.12"></script>
-  <script src="./js/event_handler.js?ver=1.0.12"></script>
+  <script src="./js/ui_handler.js?ver=1.0.13"></script>
+  <script src="./js/event_handler.js?ver=1.0.13"></script>
 </html>

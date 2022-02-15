@@ -89,10 +89,7 @@ function buttonOnClick(idx) {
 
         if (document.getElementById('userinfo_type').value === 'param') {
             params.name = document.getElementById('userinfo_name').value;
-            const birthday1 = document.getElementById('userinfo_birthday1').value;
-            const birthday2 = document.getElementById('userinfo_birthday2').value;
-            const birthday3 = document.getElementById('userinfo_birthday3').value;
-            params.birthday = birthday1 + "-" + birthday2 + "-" + birthday3;
+            params.birthday = document.getElementById('userinfo_birthday').value;
             params.phone_number = document.getElementById('userinfo_phone_number').value;
             params.email = document.getElementById('userinfo_email').value;
     

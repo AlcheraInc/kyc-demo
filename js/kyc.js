@@ -95,7 +95,7 @@ function buttonOnClick(idx) {
     
             params.customer_id = String(idx + 7);
     
-            if (!params.name || !birthday1 || !birthday2 || !birthday3 || !params.phone_number || !params.email) {
+            if (!params.name || !params.birthday || !params.phone_number || !params.email) {
                 alert('필수 정보가 입력되지 않았습니다.');
                 hideLoadingUI();
                 return;

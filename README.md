@@ -30,6 +30,7 @@
       "modified": 신분증 OCR 결과에서 추가 수정여부 [true | false],
       "verified": 신분증 정보 정부기관 진위확인 결과 [true | false],
       "is_uploaded": 신분증을 직접 촬영하지 않고 업로드 했는지 여부 [true | false], 
+      "is_manual_input": 신분증 사진을 OCR을 사용하지 않고 직접 입력 여부 [true | false], 
       "id_card_image": 신분증 민감정보 Masking 사진 ["/9j/4AAQSkZ..."],
       "id_crop_image": 신분증에서 얼굴 crop 사진 ["/9j/4AAQSkZ..."],
       "id_card_origin": 신분증 원본 촬영 사진 ["/9j/4AAQSkZ..."],
@@ -78,6 +79,7 @@
       "modified": false,
       "verified": true,
       "is_uploaded": false,
+      "is_manual_input": false,
       "id_card_image": "/9j/4AAQSkZ...",
       "id_crop_image": "/9j/4AAQSkZ...",
       "id_card_origin": "/9j/4AAQSkZ...",
@@ -124,6 +126,7 @@
     "id_card": {
       "verified": false,
       "is_uploaded": false,
+      "is_manual_input": false,
       "id_card_image": "/9j/4AAQSkZ...",
       "id_crop_image": "/9j/4AAQSkZ...",
       "id_card_origin": "/9j/4AAQSkZ...",

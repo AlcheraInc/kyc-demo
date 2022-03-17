@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "http-server -S -C cert.pem",
+    "start": "http-server -S -C cert.pem -p 8000",
     "cert": "openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

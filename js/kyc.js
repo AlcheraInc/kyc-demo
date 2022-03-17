@@ -205,6 +205,7 @@ function updateKYCResult(data, json) {
             if (detail.account) {
                 content += "<br/> - 예금주명 : " + (detail.account.user_name ? detail.account.user_name : "N/A");
                 content += "<br/> - 금융사명 : " + (detail.account.finance_company ? detail.account.finance_company : "N/A");
+                content += "<br/> - 금융사코드 : " + (detail.account.finance_code ? detail.account.finance_code : "N/A");
                 content += "<br/> - 계좌번호 : " + (detail.account.account_number ? detail.account.account_number : "N/A");
             }
         }

@@ -45,6 +45,7 @@
     "account": { 1원 계좌인증 결과
       "verified": 1원 계좌인증 성공여부 [true | false],
       "finance_company": 금융사명 ["OO은행"],
+      "finance_code": 금융사코드 ["O12"],
       "account_number": 금융사명 ["987654321012",],
       "user_name": 예금주명 ["홍길동"]
     }
@@ -93,6 +94,7 @@
     "account": {
       "verified": true,
       "finance_company": "OO은행",
+      "finance_code": "O12",
       "account_number": "987654321012",
       "user_name": "홍길동"
     }

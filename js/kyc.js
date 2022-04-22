@@ -203,7 +203,7 @@ function updateKYCResult(data, json) {
             content += "<h4 class='subTitle'>1원 계좌 인증</h4>";
             content += "<br/> - 결과 : " + (detail.account ? (detail.account.verified ? "<span style='color:blue'>성공</span>" : "<span style='color:red'>실패</span>") : "N/A");
             if (detail.account) {
-                content += "<br/> - 고객명 : " + (detail.account.account_holder ? detail.account.account_holder : "N/A");
+                content += "<br/> - 예금주명 : " + (detail.account.account_holder ? detail.account.account_holder : "N/A");
                 content += "<br/> - 예금주명 : " + (detail.account.mod_account_holder ? detail.account.account_holder : detail.account.mod_account_holder);
                 content += "<br/> - 금융사명 : " + (detail.account.finance_company ? detail.account.finance_company : "N/A");
                 content += "<br/> - 금융사코드 : " + (detail.account.finance_code ? detail.account.finance_code : "N/A");

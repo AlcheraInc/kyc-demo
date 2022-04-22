@@ -1,7 +1,7 @@
 
 // const KYC_TARGET_ORIGIN = "https://kyc.useb.co.kr";
 const KYC_TARGET_ORIGIN = "https://192.168.1.58:8085";
-//const KYC_TARGET_ORIGIN = "https://develop.d30g5uq5vz62d1.amplifyapp.com";
+// const KYC_TARGET_ORIGIN = "https://develop.d30g5uq5vz62d1.amplifyapp.com";
 const KYC_URL = KYC_TARGET_ORIGIN + "/auth";
 // 고객사별 params 정보는 별도로 전달됩니다. 테스트를 위한 임시계정 정보이며, 운영을 위한 계정정보로 변경 필요
 // 계정정보는 하드코딩하지 않고 적절한 보안수준을 적용하여 관리 필요 (적절한 인증절차 후 내부 Server로 부터 받아오도록 관리 등)
@@ -203,7 +203,8 @@ function updateKYCResult(data, json) {
             content += "<h4 class='subTitle'>1원 계좌 인증</h4>";
             content += "<br/> - 결과 : " + (detail.account ? (detail.account.verified ? "<span style='color:blue'>성공</span>" : "<span style='color:red'>실패</span>") : "N/A");
             if (detail.account) {
-                content += "<br/> - 예금주명 : " + (detail.account.account_holder ? detail.account.account_holder : "N/A");
+                content += "<br/> - 고객명 : " + (detail.account.account_holder ? detail.account.account_holder : "N/A");
+                content += "<br/> - 예금주명 : " + (detail.account.mod_account_holder ? detail.account.account_holder : detail.account.mod_account_holder);
                 content += "<br/> - 금융사명 : " + (detail.account.finance_company ? detail.account.finance_company : "N/A");
                 content += "<br/> - 금융사코드 : " + (detail.account.finance_code ? detail.account.finance_code : "N/A");
                 content += "<br/> - 계좌번호 : " + (detail.account.account_number ? detail.account.account_number : "N/A");

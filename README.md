@@ -47,7 +47,8 @@
       "finance_company": 금융사명 ["OO은행"],
       "finance_code": 금융사코드 ["O12"],
       "account_number": 금융사명 ["987654321012",],
-      "user_name": 예금주명 ["홍길동"]
+      "account_holder": 예금주명 ["홍길동"],
+      "mod_account_holder": 고객명과 계좌 예금주명이 불일치할 경우 사용자가 수정한 계좌 예금주명["Hong Gil Dong"]
     }
   },
   "api_response": { 사용불필요

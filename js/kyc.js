@@ -204,7 +204,7 @@ function updateKYCResult(data, json) {
             content += "<br/> - 결과 : " + (detail.account ? (detail.account.verified ? "<span style='color:blue'>성공</span>" : "<span style='color:red'>실패</span>") : "N/A");
             if (detail.account) {
                 content += "<br/> - 예금주명 : " + (detail.account.account_holder ? detail.account.account_holder : "N/A");
-                content += "<br/> - 예금주명 : " + (detail.account.mod_account_holder ? detail.account.account_holder : detail.account.mod_account_holder);
+                content += "<br/> - 수정된 예금주명(수정한 경우만) : " + (detail.account.mod_account_holder ? detail.account.account_holder : detail.account.mod_account_holder);
                 content += "<br/> - 금융사명 : " + (detail.account.finance_company ? detail.account.finance_company : "N/A");
                 content += "<br/> - 금융사코드 : " + (detail.account.finance_code ? detail.account.finance_code : "N/A");
                 content += "<br/> - 계좌번호 : " + (detail.account.account_number ? detail.account.account_number : "N/A");

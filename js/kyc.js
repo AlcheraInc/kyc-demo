@@ -1,8 +1,8 @@
 
-// const KYC_TARGET_ORIGIN = "https://kyc.useb.co.kr";
-const KYC_TARGET_ORIGIN = "https://192.168.1.58:8085";
-// const KYC_TARGET_ORIGIN = "https://develop.d30g5uq5vz62d1.amplifyapp.com";
-const KYC_URL = KYC_TARGET_ORIGIN + "/auth";
+const KYC_TARGET_ORIGIN = "*";     // 보안적으로 취약하니 *을 사용하는것은 권장하지 않습니다. 
+// const KYC_TARGET_ORIGIN = "http://yourservicedomain.com";        // postMessage의 target origin을 지정하는 예시입니다. 
+const KYC_URL = "https://kyc.useb.co.kr/auth";
+
 // 고객사별 params 정보는 별도로 전달됩니다. 테스트를 위한 임시계정 정보이며, 운영을 위한 계정정보로 변경 필요
 // 계정정보는 하드코딩하지 않고 적절한 보안수준을 적용하여 관리 필요 (적절한 인증절차 후 내부 Server로 부터 받아오도록 관리 등)
 const KYC_PARAMS = {

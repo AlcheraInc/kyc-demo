@@ -183,7 +183,7 @@ function updateKYCResult(data, json) {
 
         if (detail.module.face_authentication) {
             content += "<br/>";
-            content += "<h4 class='subTitle'>신분증 얼굴 사진 VS 셀피 촬영 사진 유사도</h4>";      // id_card face vs. selfie face
+            content += "<h4 class='subTitle'>신분증 얼굴 사진 VS 셀피 촬영 사진 유사도</h4>";      // similarity between id_card face and selfie face
             content += "<br/> - 결과 : " + (detail.face_check ? (detail.face_check.is_same_person ? "<span style='color:blue'>높음</span>" : "<span style='color:red'>낮음</span>") : "N/A");
             if (detail.face_check) {
                 content += "<br/> - 신분증 얼굴 사진<br/>&nbsp;&nbsp;&nbsp;<img style='max-height:100px;' src='" + imageConverter(detail.id_card.id_crop_image) + "' />";

@@ -177,7 +177,7 @@
   - ![image](https://user-images.githubusercontent.com/87741912/147376556-bcf43b90-3191-4a98-b49e-68f9696fc574.png)
   - If you see the "Select id_card" as shown in the screen below, it means that it works properly(it might be different in according to service type)
   - As shown in the screen below, iframe is linked to the entire screen (width:100%, height:100%, border: none) on the KYC service mobile web.
-  - ![image](https://user-images.githubusercontent.com/87741912/147376596-8c633ab2-6ad9-4d7e-a886-3a258e893e29.png)
+  - ![eKYC 접속 화면](https://user-images.githubusercontent.com/102782961/171438933-e09e29d6-6755-41bf-a0f2-ebfb08816b9f.JPG)
 ---
 - Step 5) DEBUG window
   - During the test, when a specific event ("KYC authentication success" or "failure" or "termination" (e.g. middle departure) occurs in the KYC service operating within the iframe, the result is delivered in a postMessage manner.

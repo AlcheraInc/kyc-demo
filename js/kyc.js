@@ -1,9 +1,9 @@
-const KYC_TARGET_ORIGIN = "*";     // 보안적으로 취약하니 *을 사용하는것은 권장하지 않습니다. (refer : https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#:~:text=serialize%20them%20yourself.-,targetOrigin,-Specifies%20what%20the)
-// const KYC_TARGET_ORIGIN = "http://yourservicedomain.com";        // postMessage의 target origin을 지정하는 예시입니다. 
+const KYC_TARGET_ORIGIN = "*";     // 보안적으로 취약하니 * 을 사용하는것은 권장하지 않습니다.( * is not secure. use your own domain for target origin) (refer : https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#:~:text=serialize%20them%20yourself.-,targetOrigin,-Specifies%20what%20the)
+// const KYC_TARGET_ORIGIN = "http://yourservicedomain.com";     // postMessage의 target origin을 지정하는 예시입니다.(This is an example of how to set target origin for postMessage) 
 const KYC_URL = "https://kyc.useb.co.kr/auth";
 
-// 고객사별 params 정보는 별도로 전달됩니다. 테스트를 위한 임시계정 정보이며, 운영을 위한 계정정보로 변경 필요
-// 계정정보는 하드코딩하지 않고 적절한 보안수준을 적용하여 관리 필요 (적절한 인증절차 후 내부 Server로 부터 받아오도록 관리 등)
+// 고객사별 params 정보는 별도로 전달됩니다. 테스트를 위한 임시계정 정보이며, 운영을 위한 계정정보로 변경 필요 (Demo accounts for test are as follows. Params for custmomer prod is delievered privately) 
+// 계정정보는 하드코딩하지 않고 적절한 보안수준을 적용하여 관리 필요. 적절한 인증절차 후 내부 Server로 부터 받아오는 것을 권장 (Recommend that params should not be hardcoded and be brought from customer`s internal server)
 const KYC_PARAMS = {
     1: { "customer_id": "2", "id": "demoUser", "key": "demoUser0000!" },
     2: { "customer_id": "2", "id": "demoUser", "key": "demoUser0000!" },
@@ -16,7 +16,7 @@ const KYC_PARAMS = {
 };
 
 window.addEventListener("message", (e) => {
-    console.log("alcherakyc response", e.data); // base64 encoded된 JSON 메시지이므로 decoded해야 함
+    console.log("alcherakyc response", e.data); // base64 encoded된 JSON 메시지이므로 decoded해야 함(needs to be decoded becaused it`s encoded by base64)
     console.log("origin :", e.origin);
     try {
         const decodedData = decodeURIComponent(atob(e.data));
@@ -33,20 +33,20 @@ window.addEventListener("message", (e) => {
             if (review_result.id_card) {
                 const id_card = review_result.id_card;
                 if (id_card.id_card_image) {
-                    id_card.id_card_image = id_card.id_card_image.substring(0, 20) + "...생략...";
+                    id_card.id_card_image = id_card.id_card_image.substring(0, 20) + "...생략(omit)...";
                 }
                 if (id_card.id_card_origin) {
-                    id_card.id_card_origin = id_card.id_card_origin.substring(0, 20) + "...생략...";
+                    id_card.id_card_origin = id_card.id_card_origin.substring(0, 20) + "...생략(omit)...";
                 }
                 if (id_card.id_crop_image) {
-                    id_card.id_crop_image = id_card.id_crop_image.substring(0, 20) + "...생략...";
+                    id_card.id_crop_image = id_card.id_crop_image.substring(0, 20) + "...생략(omit)...";
                 }
             }
 
             if (review_result.face_check) {
                 const face_check = review_result.face_check;
                 if (face_check.selfie_image) {
-                    face_check.selfie_image = face_check.selfie_image.substring(0, 20) + "...생략...";
+                    face_check.selfie_image = face_check.selfie_image.substring(0, 20) + "...생략(omit)...";
                 }
             }
 
@@ -63,11 +63,11 @@ window.addEventListener("message", (e) => {
             updateKYCResult(strHighlight, json);
         } else if (json.result === "complete") {
             updateDebugWin(strHighlight);
-            updateKYCStatus("KYC가 완료되었습니다.");
+            updateKYCStatus("KYC가 완료되었습니다.");     // KYC is completed
             endKYC();
         } else if (json.result === "close") {
             updateDebugWin(strHighlight);
-            updateKYCStatus("KYC가 완료되지 않았습니다.");
+            updateKYCStatus("KYC가 완료되지 않았습니다.");     // KYC is not completed (closed)
             endKYC();
         } else {
             // invalid result
@@ -95,7 +95,7 @@ function buttonOnClick(idx) {
             params.customer_id = String(idx + 7);
     
             if (!params.name || !params.birthday || !params.phone_number || !params.email) {
-                alert('필수 정보가 입력되지 않았습니다.');
+                alert('필수 정보가 입력되지 않았습니다.');        // Required information is not entered.
                 hideLoadingUI();
                 return;
             }
@@ -153,7 +153,7 @@ function updateKYCResult(data, json) {
     kycResult.innerHTML = "";
 
     const title1 = document.createElement("h3");
-    title1.innerHTML = "<h3 class=\"customer--headline\">최종 결과 : " + json.result + " </h3>";
+    title1.innerHTML = "<h3 class=\"customer--headline\">최종 결과 : " + json.result + " </h3>";        // Final Result        
 
     const result1 = document.createElement("div");
     result1.className = 'syntaxHighlight bright';
@@ -165,7 +165,7 @@ function updateKYCResult(data, json) {
     if (detail) {
         if (detail.module.id_card_ocr && detail.module.id_card_verification) {
 
-            content = "<h4 class='subTitle'>신분증 진위확인</h4>";
+            content = "<h4 class='subTitle'>신분증 진위확인</h4>";        // id_card verification
             content += "<br/> - 결과 : " + (detail.id_card ? (detail.id_card.verified ? "<span style='color:blue'>성공</span>" : "<span style='color:red'>실패</span>") : "N/A");
 
             if (detail.id_card.is_uploaded !== undefined) {
@@ -183,7 +183,7 @@ function updateKYCResult(data, json) {
 
         if (detail.module.face_authentication) {
             content += "<br/>";
-            content += "<h4 class='subTitle'>신분증 얼굴 사진 VS 셀피 촬영 사진 유사도</h4>";
+            content += "<h4 class='subTitle'>신분증 얼굴 사진 VS 셀피 촬영 사진 유사도</h4>";      // id_card face vs. selfie face
             content += "<br/> - 결과 : " + (detail.face_check ? (detail.face_check.is_same_person ? "<span style='color:blue'>높음</span>" : "<span style='color:red'>낮음</span>") : "N/A");
             if (detail.face_check) {
                 content += "<br/> - 신분증 얼굴 사진<br/>&nbsp;&nbsp;&nbsp;<img style='max-height:100px;' src='" + imageConverter(detail.id_card.id_crop_image) + "' />";
@@ -193,13 +193,13 @@ function updateKYCResult(data, json) {
 
         if (detail.module.liveness) {
             content += "<br/>";
-            content += "<h4 class='subTitle'>얼굴 사진 진위확인</h4>";
+            content += "<h4 class='subTitle'>얼굴 사진 진위확인</h4>";      // liveness verification
             content += "<br/> - 결과 : " + (detail.face_check ? (detail.face_check.is_live ? "<span style='color:blue'>성공</span>" : "<span style='color:red'>실패</span>") : "N/A");
         }
 
         if (detail.module.account_verification) {
             content += "<br/>";
-            content += "<h4 class='subTitle'>1원 계좌 인증</h4>";
+            content += "<h4 class='subTitle'>1원 계좌 인증</h4>";      // bank account verification
             content += "<br/> - 결과 : " + (detail.account ? (detail.account.verified ? "<span style='color:blue'>성공</span>" : "<span style='color:red'>실패</span>") : "N/A");
             if (detail.account) {
                 content += "<br/> - 예금주명 : " + (detail.account.account_holder ? detail.account.account_holder : "N/A");
@@ -216,7 +216,7 @@ function updateKYCResult(data, json) {
     kycResult.appendChild(result1);
 
     const title2 = document.createElement("h3");
-    title2.innerHTML = "<h3 class=\"customer--headline\">PostMessage 상세</h3>";
+    title2.innerHTML = "<h3 class=\"customer--headline\">PostMessage 상세</h3>";      // postMessage detail
 
     const result2 = document.createElement("pre");
     result2.className = "syntaxHighlight bright";

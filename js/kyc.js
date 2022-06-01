@@ -101,7 +101,7 @@ function buttonOnClick(idx) {
             }
         }
     
-        let encodedParams = btoa(encodeURIComponent(JSON.stringify(params)));
+        let encodedParams = btoa(encodeURIComponent(JSON.stringify(params)));     // how to make a token by using base64 and url encoding
         kycIframe.contentWindow.postMessage(encodedParams, KYC_TARGET_ORIGIN);
         hideLoadingUI();
         startKYC();

@@ -16,7 +16,7 @@
     "name": "홍길동",
     "phone_number": "01012345678",
     "birthday": "2000-01-01",
-    "result_type": only for reviewer function in Admin page   // 
+    "result_type": only for reviewer function in Admin page 
     "rejected_reason": only for reviewer function in Admin page
     "reviewer_name": only for reviewer function in Admin page
     "module": { The functions that a customer uses

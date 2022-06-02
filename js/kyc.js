@@ -1,5 +1,5 @@
-const KYC_TARGET_ORIGIN = "*";     // 보안적으로 취약하니 *을 사용하는것은 권장하지 않습니다. (refer : https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#:~:text=serialize%20them%20yourself.-,targetOrigin,-Specifies%20what%20the)
-// const KYC_TARGET_ORIGIN = "http://yourservicedomain.com";        // postMessage의 target origin을 지정하는 예시입니다. 
+// const KYC_TARGET_ORIGIN = "*";     // 보안적으로 취약하니 *을 사용하는것은 권장하지 않습니다. (refer : https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#:~:text=serialize%20them%20yourself.-,targetOrigin,-Specifies%20what%20the)
+const KYC_TARGET_ORIGIN = "https://kyc.useb.co.kr";
 const KYC_URL = "https://kyc.useb.co.kr/auth";
 
 // 고객사별 params 정보는 별도로 전달됩니다. 테스트를 위한 임시계정 정보이며, 운영을 위한 계정정보로 변경 필요

@@ -16,7 +16,7 @@
     "name": 이름 ["양동현"],
     "phone_number": 전화번호 ["01012345678]",
     "birthday": 생년월일 ["2000-01-01"],
-    "result_type": 사용불필요
+    "result_type": 종합판정결과 [1 -> 자동승인 | 2 -> 자동거부 | 5 -> 수동심사대상] 
     "rejected_reason": 사용불필요
     "reviewer_name": 사용불필요
     "module": { 고객이 사용하고 있는 기능
@@ -39,7 +39,7 @@
     },
     "face_check": { 안면인증 결과
       "is_same_person": 신분증 얼굴사진 vs 셀피 얼굴사진 비교 결과 [true | false],
-      "is_live": 셀피 얼굴사진 진위확인 [true | false]
+      "is_live": 셀피 얼굴사진 진위확인(라이브니스) 결과 [true | false]
       "selfie_image": 셀피 얼굴사진 ["/9j/4AAQSkZ..."]
     },
     "account": { 1원 계좌인증 결과

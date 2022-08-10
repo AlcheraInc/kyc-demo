@@ -153,7 +153,7 @@ function updateKYCResult(data, json) {
     kycResult.innerHTML = "";
 
     const title1 = document.createElement("h3");
-    title1.innerHTML = "<h3 class=\"customer--headline\">최종 결과 : " + json.result + " </h3>";
+    title1.innerHTML = "<h3 class=\"customer--headline\">최종 결과</h3>";
 
     const result1 = document.createElement("div");
     result1.className = 'syntaxHighlight bright';
@@ -163,13 +163,30 @@ function updateKYCResult(data, json) {
     let content = "";
 
     if (detail) {
-        if (detail.module.id_card_ocr && detail.module.id_card_verification) {
+        let result_type_txt = "N/A";
+        if (detail.result_type === 1) {
+            result_type_txt = "<span style='color:blue'>자동승인</span>";
+        } else if (detail.result_type === 2) {
+            result_type_txt = "<span style='color:red'>자동거부</span>";
+        } else if (detail.result_type === 5) {
+            result_type_txt = "<span style='color:orange'>수동심사대상</span>";
+        } else {
+            result_type_txt = "INVALID_TYPE";
+        }
+        title1.innerHTML += "- 인증 결과 : " + (json.result === "success" ? "<span style='color:blue'>성공</span>" : "<span style='color:red'>실패</span>") + " </br>";
+        title1.innerHTML += "- 종합 판정 결과 : " + result_type_txt + " </br>";
 
-            content = "<h4 class='subTitle'>신분증 진위확인</h4>";
-            content += "<br/> - 결과 : " + (detail.id_card ? (detail.id_card.verified ? "<span style='color:blue'>성공</span>" : "<span style='color:red'>실패</span>") : "N/A");
+        if (detail.module.id_card_ocr && detail.module.id_card_verification) {
+            content = "<h5><span style='color:blue'>■ 정상</span> | <span style='color:red'>■ 거부사유</span> | <span style='color:orange'>■ 수동심사사유</span> | <span style='color:purple'>■ 참고사항</span></h5>";
+            content += "<h4 class='subTitle'>신분증 진위확인</h4>";
+            content += "<br/> - 정부기관 대조 결과 : " + (detail.id_card ? (detail.id_card.verified ? "<span style='color:blue'>성공</span>" : "<span style='color:red'>실패</span>") : "N/A");
+
+            if (detail.id_card.modified !== undefined) {
+                content += "<br/> - 정보수정여부 : " + (detail.id_card.modified === false ? "<span style='color:blue'>NO</span>" : "<span style='color:orange'>YES</span>");
+            }
 
             if (detail.id_card.is_uploaded !== undefined) {
-                content += "<br/> - 제출방식 : " + (detail.id_card.is_uploaded === false ? "<span style='color:blue'>카메라 촬영</span>" : "<span style='color:red'>파일 업로드</span>");
+                content += "<br/> - 신분증 제출방식 : " + (detail.id_card.is_uploaded === false ? "<span style='color:blue'>카메라 촬영</span>" : "<span style='color:purple'>파일 업로드</span>");
             }
 
             if (detail.id_card.id_card_image) {
@@ -183,8 +200,8 @@ function updateKYCResult(data, json) {
 
         if (detail.module.face_authentication) {
             content += "<br/>";
-            content += "<h4 class='subTitle'>신분증 얼굴 사진 VS 셀피 촬영 사진 유사도</h4>";
-            content += "<br/> - 결과 : " + (detail.face_check ? (detail.face_check.is_same_person ? "<span style='color:blue'>높음</span>" : "<span style='color:red'>낮음</span>") : "N/A");
+            content += "<h4 class='subTitle'>신분증 얼굴 사진 VS 셀피 사진 유사도</h4>";
+            content += "<br/> - 유사도 측정 결과 : " + (detail.face_check ? (detail.face_check.is_same_person ? "<span style='color:blue'>높음</span>" : "<span style='color:orange'>낮음</span>") : "N/A");
             if (detail.face_check) {
                 content += "<br/> - 신분증 얼굴 사진<br/>&nbsp;&nbsp;&nbsp;<img style='max-height:100px;' src='" + imageConverter(detail.id_card.id_crop_image) + "' />";
                 content += "<br/> - 셀피 촬영 사진<br/>&nbsp;&nbsp;&nbsp;<img style='max-height:100px;' src='" + imageConverter(detail.face_check.selfie_image) + "' />";
@@ -193,17 +210,17 @@ function updateKYCResult(data, json) {
 
         if (detail.module.liveness) {
             content += "<br/>";
-            content += "<h4 class='subTitle'>얼굴 사진 진위확인</h4>";
-            content += "<br/> - 결과 : " + (detail.face_check ? (detail.face_check.is_live ? "<span style='color:blue'>성공</span>" : "<span style='color:red'>실패</span>") : "N/A");
+            content += "<h4 class='subTitle'>셀피 사진 진위확인</h4>";
+            content += "<br/> - 셀피(얼굴) 사진 진위확인(라이브니스) 결과 : " + (detail.face_check ? (detail.face_check.is_live ? "<span style='color:blue'>성공</span>" : "<span style='color:red'>실패</span>") : "N/A");
         }
 
         if (detail.module.account_verification) {
             content += "<br/>";
             content += "<h4 class='subTitle'>1원 계좌 인증</h4>";
-            content += "<br/> - 결과 : " + (detail.account ? (detail.account.verified ? "<span style='color:blue'>성공</span>" : "<span style='color:red'>실패</span>") : "N/A");
+            content += "<br/> - 1원 계좌 인증 결과 : " + (detail.account ? (detail.account.verified ? "<span style='color:blue'>성공</span>" : "<span style='color:red'>실패</span>") : "N/A");
             if (detail.account) {
                 content += "<br/> - 예금주명 : " + (detail.account.account_holder ? detail.account.account_holder : "N/A");
-                content += "<br/> - 수정된 예금주명(수정한 경우만) : " + (detail.account.mod_account_holder ? detail.account.mod_account_holder : "N/A");
+                content += "<br/> - 수정된 예금주명(수정한 경우만) : " + (detail.account.mod_account_holder ? "<span style='color:orange'>" + detail.account.mod_account_holder + "</span>" : "N/A");
                 content += "<br/> - 금융사명 : " + (detail.account.finance_company ? detail.account.finance_company : "N/A");
                 content += "<br/> - 금융사코드 : " + (detail.account.finance_code ? detail.account.finance_code : "N/A");
                 content += "<br/> - 계좌번호 : " + (detail.account.account_number ? detail.account.account_number : "N/A");

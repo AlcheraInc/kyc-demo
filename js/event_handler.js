@@ -72,7 +72,7 @@ document.getElementById('userinfo_birthday').addEventListener("focusout", (e) =>
 
     e.target.value = onblurTransformDateFormat(e.target.value);
 
-    if (!validate_birthday(e)) {
+    if (e.target.value !== '' && !validate_birthday(e)) {
         alert("생년월일 포멧(YYYY-MM-DD)이 올바르지 않습니다. (" + e.target.value + ")");
         e.target.value = "";
         /* setTimeout(() => {

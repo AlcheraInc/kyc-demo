@@ -141,6 +141,13 @@ function initKYC() {
     document.getElementById('customer_start_ui').style.display = 'block';
     document.getElementById('kyc').style.display = 'none';
     document.getElementById('customer_end_ui').style.display = 'none';
+
+    const selectedValue = document.getElementById('userinfo_type').value;
+    if (selectedValue === 'param') {
+        document.querySelector('#param .customer--select-check').classList.add('checked');
+    } else {
+        document.querySelector('#use_input_ui .customer--select-check').classList.add('checked');
+    }
 }
 
 function updateKYCResult(data, json) {

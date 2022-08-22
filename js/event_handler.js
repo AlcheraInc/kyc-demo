@@ -41,7 +41,7 @@ document.querySelectorAll('input').forEach((element) => {
     };
 
     element.onfocus = (e) => {
-        e.target.scrollIntoView();
+        // e.target.scrollIntoView();
     }
 });
 
@@ -72,13 +72,13 @@ document.getElementById('userinfo_birthday').addEventListener("focusout", (e) =>
 
     e.target.value = onblurTransformDateFormat(e.target.value);
 
-    if (!validate_birthday(e)) {
+    if (e.target.value !== '' && !validate_birthday(e)) {
         alert("생년월일 포멧(YYYY-MM-DD)이 올바르지 않습니다. (" + e.target.value + ")");
-        //e.target.value = "";
-        setTimeout(() => {
+        e.target.value = "";
+        /* setTimeout(() => {
             console.log('focus rollback');
             e.target.focus();
-        }, 500);
+        }, 500); */
 
     }
 });
@@ -88,7 +88,9 @@ const validate_birthday = (e) => {
     if (dob1.length !== 8) {
         return false;
     }
-    const date = new Date(dob1.substr(0, 4), dob1.substr(4,2), dob1.substr(6,2));
+    const date = new Date(dob1.substr(0, 4), Number(dob1.substr(4, 2)) - 1, dob1.substr(6, 2));
+    const today = new Date();
+    if (today < date) return false;
     return (date.toString() !== "Invalid Date");
 };
 

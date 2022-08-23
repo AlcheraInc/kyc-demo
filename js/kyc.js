@@ -144,9 +144,9 @@ function initKYC() {
 
     const selectedValue = document.getElementById('userinfo_type').value;
     if (selectedValue === 'param') {
-        document.querySelector('#param .customer--select-check').classList.add('checked');
+        paramBox.click();
     } else {
-        document.querySelector('#use_input_ui .customer--select-check').classList.add('checked');
+        useInputUiBox.click();
     }
 }
 

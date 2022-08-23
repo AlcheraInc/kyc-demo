@@ -9,10 +9,11 @@
     <title>eKYC Sample</title>
     <script type="text/javascript" src="./js/util.js?ver=1.0.19"></script>
     <script type="text/javascript" src="./js/kyc.js?ver=1.0.19"></script>
+    <script type="text/javascript" src="./js/test.js?ver=1.0.19"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
   </head>
 
-  <body onload="initKYC()">
+  <body onload="initTest(); initKYC();">
     <div id="debug_win" class="debug_win" style="display: none"></div>
     <div
       id="customer_start_ui"
@@ -39,7 +40,6 @@
       </div>
 
       <div class="customer--division"></div>
-
 
       <div class="customer--section">
         <h3 class="customer--headline">개인정보 옵션</h3>
@@ -81,6 +81,7 @@
           입력 UI 제공(사용자 정보 입력 처리를 useb.eKYC에 위임)
         </option>
       </select>
+
       <div class="customer--division" id="userinfo-division"></div>
 
       <div id="userinfo_div" class="customer--section">
@@ -130,7 +131,7 @@
           />
         </div>
         <br />
-        <div class="flex flex-col text-start" style="margin-bottom: 75px">
+        <div class="flex flex-col text-start">
           <span class="customer--label" style="margin-bottom: 8px">
             이메일
           </span>
@@ -141,78 +142,88 @@
             class="customer--input"
           />
         </div>
-        <!-- <button id="userinfo--btn" class="customer--btn">
-          사용자 정보 입력 완료
-        </button> -->
-      </div>
-      <div class="customer--division"></div>
-
-      <div class="customer--section" id="logic-options">
-        <h3 class="customer--headline">기능 선택 옵션</h3>
-        <ul>
-          <li>
-            <img
-              onclick="buttonOnClick(2);"
-              src="img\id.svg"
-              class="imgBtn"
-            /><br />
-          </li>
-          <li>
-            <img
-              onclick="buttonOnClick(3);"
-              src="img\id_face.svg"
-              class="imgBtn"
-            /><br />
-          </li>
-          <li>
-            <img
-              onclick="buttonOnClick(4);"
-              src="img\id_face_live.svg"
-              class="imgBtn"
-            /><br />
-          </li>
-          <li>
-            <img
-              onclick="buttonOnClick(5);"
-              src="img\id_face_live_account.svg"
-              class="imgBtn"
-            /><br />
-          </li>
-          <li>
-            <img
-              onclick="buttonOnClick(6);"
-              src="img\account.svg"
-              class="imgBtn"
-            /><br />
-          </li>
-          <li>
-            <img
-              onclick="buttonOnClick(7);"
-              src="img\id_account.svg"
-              class="imgBtn"
-            /><br />
-          </li>
-          <li>
-            <img
-              onclick="buttonOnClick(8);"
-              src="img\id_face_account.svg"
-              class="imgBtn"
-            /><br />
-          </li>
-        </ul>
       </div>
 
       <div class="customer--division"></div>
 
-      <div class="customer--section">
-        <h3 class="customer--headline">이메일로 홍보중인 체험하기 링크 주소</h3>
-        <button
-          class="customer--btn"
-          onclick="window.location.href='https://kyc.useb.co.kr/auth?token=eyJjdXN0b21lcl9pZCI6ICIxIiwgImlkIjogInVzZXIwMDAxIiwgImtleSI6ICJBbGNoZXJhMDAwMCEifQ%3D%3D';"
-        >
-          체험하기 링크
+      <h3 class="customer--headline">고객사 연결정보</h3>
+
+      <div id="customerinfo_credential_type_div" class="customer--section">
+        <h3 class="customer--title" style="font-size: 20px; margin-top: 0px">
+          credentical 방식
+        </h3>
+        <h6 class="customer--label" style="font-size: 14px; line-height: 24px">
+          client_id, client_secret을 올바로 입력하세요.
+          customer_id는 자동으로 가져옵니다.
+        </h6>
+
+        <div class="flex flex-col text-start">
+          <span class="customer--label" style="margin-bottom: 8px">
+            customer_id
+          </span>
+          <input
+            id="customerinfo_customer_id"
+            type="number"
+            disabled
+            class="input_txt_kr customer--input"
+          />
+        </div>
+        <br />
+        <div class="flex flex-col text-start">
+          <span class="customer--label" style="margin-bottom: 8px">
+            id (client_id)
+          </span>
+          <input
+            id="customerinfo_id"
+            type="text"
+            placeholder="demoUser"
+            class="input_txt_kr customer--input"
+          />
+        </div>
+        <br />
+        <div class="flex flex-col text-start">
+          <span class="customer--label" style="margin-bottom: 8px">
+            key (client_secret)
+          </span>
+          <input
+            id="customerinfo_key"
+            type="text"
+            placeholder="demoUser0000!"
+            class="customer--input"
+          />
+        </div>
+      </div>
+
+      <div id="customerinfo_access_token_div" class="customer--section">
+        <h3 class="customer--title" style="font-size: 20px; margin-top: 0px">
+          access_token 방식
+        </h3>
+        <h6 class="customer--label" style="font-size: 14px; line-height: 24px">
+          access_token 값을 올바로 입력하세요.
+        </h6>
+
+        <div class="flex flex-col text-start" style="margin-bottom: 75px">
+          <span class="customer--label" style="margin-bottom: 8px">
+            access_token
+          </span>
+          <input
+            id="customerinfo_access_token"
+            type="text"
+            placeholder="ACCESS_TOKEN을 입력하세요"
+            class="customer--input"
+          />
+        </div>
+      </div>
+      <div class="customer--division"></div>
+
+      <div id="test_start_div" class="customer--section">
+        <button id="test_start_btn" class="customer--btn" onclick="startTest();">
+          테스트 시작
         </button>
+        <br />
+        <br />
       </div>
+
       <br />
       <br />
     </div>

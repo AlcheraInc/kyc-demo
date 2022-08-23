@@ -1,6 +1,6 @@
 // const KYC_TARGET_ORIGIN = "*";     // 보안적으로 취약하니 *을 사용하는것은 권장하지 않습니다. (refer : https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#:~:text=serialize%20them%20yourself.-,targetOrigin,-Specifies%20what%20the)
-const KYC_TARGET_ORIGIN = "https://kyc.useb.co.kr";
-const KYC_URL = "https://kyc.useb.co.kr/auth";
+const KYC_TARGET_ORIGIN = "https://kyc-dev.useb.co.kr";
+const KYC_URL = "https://kyc-dev.useb.co.kr/auth";
 
 // 고객사별 params 정보는 별도로 전달됩니다. 테스트를 위한 임시계정 정보이며, 운영을 위한 계정정보로 변경 필요
 // 계정정보는 하드코딩하지 않고 적절한 보안수준을 적용하여 관리 필요 (적절한 인증절차 후 내부 Server로 부터 받아오도록 관리 등)
@@ -144,9 +144,9 @@ function initKYC() {
 
     const selectedValue = document.getElementById('userinfo_type').value;
     if (selectedValue === 'param') {
-        document.querySelector('#param .customer--select-check').classList.add('checked');
+        paramBox.click();
     } else {
-        document.querySelector('#use_input_ui .customer--select-check').classList.add('checked');
+        useInputUiBox.click();
     }
 }
 

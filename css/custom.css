@@ -63,6 +63,30 @@
   background-color: #373eff;
   border: none;
 }
+.customer--radio-box {
+  border: 1px solid #ced1d2;
+  box-sizing: border-box;
+  border-radius: 8px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+}
+.customer--radio-check {
+  width: 16px;
+  height: 16px;
+  /* background: #f7f7f7; */
+  border: 1.2px solid #ced1d2;
+  box-sizing: border-box;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.customer--radio-check.checked {
+  background-color: #373eff;
+  border: none;
+}
 .customer--title {
   font-family: Noto Sans KR;
   font-style: normal;
